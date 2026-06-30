@@ -1380,6 +1380,112 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 .folder-thumb{width:26px;height:38px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.15);}
 .folder-thumb img{width:100%;height:100%;object-fit:cover;}
 .folder-icon-empty{position:absolute;top:14px;left:14px;z-index:3;font-size:28px;opacity:.35;}
+
+/* ===== LAYOUT DAS COLEÇÕES (grade de pastas) ===== */
+/* LISTA */
+#grid-pastas.col-layout-lista{display:flex!important;flex-direction:column;gap:0;}
+#grid-pastas.col-layout-lista .folder-card{min-height:68px;flex-direction:row;align-items:center;border-radius:0;border-left:none;border-right:none;border-top:none;border-bottom:1px solid rgba(255,255,255,.06);background:transparent;padding:12px 4px;gap:12px;}
+#grid-pastas.col-layout-lista .folder-card:first-child{border-top:1px solid rgba(255,255,255,.06);}
+#grid-pastas.col-layout-lista .folder-bg{opacity:.12;border-radius:0;}
+#grid-pastas.col-layout-lista .folder-thumbs{position:relative;top:auto;right:auto;flex-shrink:0;order:-1;}
+#grid-pastas.col-layout-lista .folder-thumb{width:30px;height:44px;}
+#grid-pastas.col-layout-lista .folder-name{font-size:13px;text-transform:none;letter-spacing:0;}
+#grid-pastas.col-layout-lista .folder-count{margin-top:0;}
+#grid-pastas.col-layout-lista .folder-desc{display:none;}
+#grid-pastas.col-layout-lista .folder-gradient{background:linear-gradient(to right,rgba(8,8,8,.95) 0%,rgba(8,8,8,.6) 60%,rgba(0,0,0,.1) 100%);}
+
+/* COMPACTO */
+#grid-pastas.col-layout-compact{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))!important;gap:8px!important;}
+#grid-pastas.col-layout-compact .folder-card{min-height:100px;padding:8px;}
+#grid-pastas.col-layout-compact .folder-name{font-size:11px;letter-spacing:0;}
+#grid-pastas.col-layout-compact .folder-count{font-size:9px;}
+#grid-pastas.col-layout-compact .folder-thumbs{top:7px;right:7px;}
+#grid-pastas.col-layout-compact .folder-thumb{width:20px;height:30px;}
+#grid-pastas.col-layout-compact .folder-desc{display:none;}
+
+/* GRANDE */
+#grid-pastas.col-layout-large{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))!important;gap:14px!important;}
+#grid-pastas.col-layout-large .folder-card{min-height:180px;padding:16px;}
+#grid-pastas.col-layout-large .folder-name{font-size:16px;}
+#grid-pastas.col-layout-large .folder-thumbs{top:12px;right:12px;}
+#grid-pastas.col-layout-large .folder-thumb{width:36px;height:52px;border-radius:6px;}
+
+/* BANNER (1 coluna larga) */
+#grid-pastas.col-layout-banner{grid-template-columns:1fr!important;gap:10px!important;}
+#grid-pastas.col-layout-banner .folder-card{min-height:110px;flex-direction:row;align-items:flex-end;padding:16px 20px;}
+#grid-pastas.col-layout-banner .folder-thumbs{position:absolute;right:16px;top:50%;transform:translateY(-50%);flex-direction:row;}
+#grid-pastas.col-layout-banner .folder-thumb{width:42px;height:62px;border-radius:6px;}
+#grid-pastas.col-layout-banner .folder-name{font-size:17px;}
+
+/* NEON */
+#grid-pastas.col-layout-neon .folder-card{background:#050505;border:1px solid var(--primary);box-shadow:0 0 10px var(--primary-glow),inset 0 0 14px rgba(0,0,0,.6);}
+#grid-pastas.col-layout-neon .folder-card:hover{box-shadow:0 0 20px var(--primary-glow),inset 0 0 14px rgba(0,0,0,.6);}
+#grid-pastas.col-layout-neon .folder-name{color:var(--primary);text-shadow:0 0 8px var(--primary);}
+#grid-pastas.col-layout-neon .folder-count{color:rgba(255,255,255,.5);}
+
+/* GLASS */
+#grid-pastas.col-layout-glass .folder-card{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:20px;}
+#grid-pastas.col-layout-glass .folder-gradient{background:linear-gradient(to top,rgba(255,255,255,.08) 0%,rgba(255,255,255,.02) 60%,transparent 100%);}
+#grid-pastas.col-layout-glass .folder-name{color:#fff;}
+
+/* MINIMAL */
+#grid-pastas.col-layout-minimal .folder-card{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.07);border-radius:0;min-height:70px;padding:12px 0;}
+#grid-pastas.col-layout-minimal .folder-bg{display:none;}
+#grid-pastas.col-layout-minimal .folder-gradient{display:none;}
+#grid-pastas.col-layout-minimal .folder-name{color:rgba(255,255,255,.8);font-size:13px;text-transform:none;letter-spacing:0;font-weight:700;}
+#grid-pastas.col-layout-minimal .folder-count{color:rgba(255,255,255,.3);}
+#grid-pastas.col-layout-minimal .folder-thumbs{position:relative;top:auto;right:auto;margin-left:auto;}
+
+/* BENTO */
+#grid-pastas.col-layout-bento{grid-template-columns:repeat(2,1fr)!important;gap:10px!important;}
+#grid-pastas.col-layout-bento .folder-card:nth-child(3n+1){grid-column:span 2;min-height:160px;}
+#grid-pastas.col-layout-bento .folder-card{border-radius:20px;border:none;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));}
+#grid-pastas.col-layout-bento .folder-card:hover{background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.04));}
+#grid-pastas.col-layout-bento .folder-name{font-size:15px;}
+
+/* POLAROID */
+#grid-pastas.col-layout-polaroid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr))!important;gap:16px!important;padding:0 15px 10px!important;}
+#grid-pastas.col-layout-polaroid .folder-card{background:#1a1a1a;border:none;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);padding:6px 6px 24px;min-height:120px;transform:rotate(-1.5deg);}
+#grid-pastas.col-layout-polaroid .folder-card:nth-child(even){transform:rotate(1.2deg);}
+#grid-pastas.col-layout-polaroid .folder-card:hover{transform:rotate(0deg) scale(1.04);}
+#grid-pastas.col-layout-polaroid .folder-bg{border-radius:2px;opacity:.5;}
+#grid-pastas.col-layout-polaroid .folder-gradient{background:linear-gradient(to top,rgba(26,26,26,.9) 0%,transparent 60%);}
+#grid-pastas.col-layout-polaroid .folder-name{font-size:11px;text-align:center;width:100%;text-transform:none;letter-spacing:0;}
+#grid-pastas.col-layout-polaroid .folder-count{text-align:center;width:100%;}
+#grid-pastas.col-layout-polaroid .folder-desc{display:none;}
+
+/* ===== LAYOUT INTERNO DA COLEÇÃO (content view) ===== */
+/* MAGAZINE */
+#grid-pasta-conteudo.col-inner-magazine{display:flex;flex-direction:column;gap:10px;}
+#grid-pasta-conteudo.col-inner-magazine .collection-item{background:rgba(255,255,255,.03);border:none;border-radius:14px;padding:10px 14px;gap:14px;}
+#grid-pasta-conteudo.col-inner-magazine .collection-item-thumb{width:52px;height:76px;border-radius:8px;}
+#grid-pasta-conteudo.col-inner-magazine .collection-item-title{font-size:14px;font-weight:900;}
+#grid-pasta-conteudo.col-inner-magazine .collection-item-meta{font-size:11px;line-height:1.5;}
+
+/* TABLE */
+#grid-pasta-conteudo.col-inner-table{display:flex;flex-direction:column;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;}
+#grid-pasta-conteudo.col-inner-table .collection-item{border-radius:0;border:none;border-bottom:1px solid rgba(255,255,255,.05);background:transparent;padding:9px 12px;}
+#grid-pasta-conteudo.col-inner-table .collection-item:last-child{border-bottom:none;}
+#grid-pasta-conteudo.col-inner-table .collection-item:nth-child(odd){background:rgba(255,255,255,.015);}
+#grid-pasta-conteudo.col-inner-table .collection-item-thumb{display:none;}
+#grid-pasta-conteudo.col-inner-table .collection-item-title{font-size:12px;}
+
+/* COVERS (grade de capas) */
+#grid-pasta-conteudo.col-inner-covers{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(90px,1fr))!important;gap:8px!important;flex-direction:unset;}
+#grid-pasta-conteudo.col-inner-covers .collection-item{flex-direction:column;align-items:center;padding:0;border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03);}
+#grid-pasta-conteudo.col-inner-covers .collection-item-thumb{width:100%;height:120px;border-radius:0;}
+#grid-pasta-conteudo.col-inner-covers .collection-item-info{padding:6px 8px 8px;width:100%;}
+#grid-pasta-conteudo.col-inner-covers .collection-item-title{font-size:10px;font-weight:800;text-align:center;}
+#grid-pasta-conteudo.col-inner-covers .collection-item-meta{display:none;}
+#grid-pasta-conteudo.col-inner-covers > span{display:none;}
+
+/* RANKED */
+#grid-pasta-conteudo.col-inner-ranked{display:flex;flex-direction:column;gap:4px;}
+#grid-pasta-conteudo.col-inner-ranked .collection-item{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.05);border-radius:0;padding:10px 0;position:relative;counter-increment:rank;}
+#grid-pasta-conteudo.col-inner-ranked .collection-item::before{content:counter(rank, decimal-leading-zero);position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:22px;font-weight:900;color:rgba(255,255,255,.07);line-height:1;width:32px;text-align:center;}
+#grid-pasta-conteudo.col-inner-ranked{counter-reset:rank;}
+#grid-pasta-conteudo.col-inner-ranked .collection-item-thumb{margin-left:38px;width:36px;height:52px;border-radius:6px;}
+#grid-pasta-conteudo.col-inner-ranked .collection-item-title{font-size:13px;font-weight:900;}
 .pasta-select-banner{display:none;background:var(--primary-grad);padding:10px 14px;border-radius:var(--radius-md);margin-bottom:12px;color:#fff;font-weight:900;font-size:13px;align-items:center;justify-content:space-between;gap:10px;}
 .pasta-select-banner.active{display:flex;}
 
@@ -1897,7 +2003,23 @@ select option{background:var(--bg-elevated);}
       <div style="padding:20px 15px 0;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
           <h2 style="font-weight:900;">Coleções</h2>
-          <div style="display:flex;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select id="inp-col-layout" onchange="setColLayout(this.value)" title="Layout das Coleções" style="height:34px;font-size:11px;padding:0 8px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-main);cursor:pointer;">
+              <option value="">Grade</option>
+              <optgroup label="— Estrutura —">
+                <option value="col-layout-compact">Compacto</option>
+                <option value="col-layout-large">Grande</option>
+                <option value="col-layout-banner">Banner</option>
+                <option value="col-layout-lista">Lista</option>
+                <option value="col-layout-bento">Bento</option>
+              </optgroup>
+              <optgroup label="— Visual —">
+                <option value="col-layout-neon">Neon</option>
+                <option value="col-layout-glass">Glass</option>
+                <option value="col-layout-minimal">Minimalista</option>
+                <option value="col-layout-polaroid">Polaroid</option>
+              </optgroup>
+            </select>
             <button class="btn-s" onclick="abrirCriarPastaModal()" style="border-color:var(--success);color:var(--success);height:34px;padding:0 12px;font-size:11px;">+ Nova</button>
             <button class="btn-s" id="btn-pasta-select-mode" onclick="togglePastaSelectMode()" style="display:none;border-color:var(--primary);color:var(--primary);height:34px;padding:0 12px;font-size:11px;">Mover Obra</button>
           </div>
@@ -1930,9 +2052,15 @@ select option{background:var(--bg-elevated);}
         <h3 id="titulo-pasta" style="color:var(--text-main);margin-bottom:4px;font-weight:900;text-transform:uppercase;letter-spacing:1px;"></h3>
         <p id="pasta-desc-text" style="font-size:12px;color:var(--text-muted);margin-bottom:4px;"></p>
         <p id="pasta-count-text" style="font-size:11px;color:var(--primary);font-weight:700;margin-bottom:12px;"></p>
-        <div style="display:flex;gap:8px;margin-bottom:12px;">
-          <button class="btn-s" id="pasta-view-grid" onclick="setPastaView('grid')" style="border-color:var(--primary);color:var(--primary);height:30px;padding:0 12px;font-size:11px;">Grade</button>
-          <button class="btn-s" id="pasta-view-list" onclick="setPastaView('list')" style="height:30px;padding:0 12px;font-size:11px;">Lista</button>
+        <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;">
+          <select id="inp-col-inner-layout" onchange="setColInnerLayout(this.value)" style="height:30px;font-size:11px;padding:0 8px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-main);cursor:pointer;">
+            <option value="grid">Grade</option>
+            <option value="list">Lista</option>
+            <option value="col-inner-covers">Capas</option>
+            <option value="col-inner-magazine">Magazine</option>
+            <option value="col-inner-table">Tabela</option>
+            <option value="col-inner-ranked">Ranking</option>
+          </select>
         </div>
         <div id="grid-pasta-conteudo"></div>
       </div>
@@ -2736,7 +2864,7 @@ window.onload=async()=>{
   const savedLixeira=await idb.get('lixeira');if(savedLixeira)lixeira=savedLixeira;
   const savedWish=await idb.get('wishlist');if(savedWish)wishlist=savedWish;
   const agora=Date.now();lixeira=lixeira.filter(x=>agora-x.deletedAt<30*86400000);
-  const defaults={theme:'duskwood',cfgLayout:'lay-classic',cfgTexture:'tex-default',cfgAnim:'anim-hover',cfgHD:'off',cfgProgress:'on',metaTarget:5,metaAno:50,wpm:200,privacy:'off',nightMode:'off',sessionTotalMin:0,sessionTodayMin:0,sessionDate:'',pastasDesc:{},pastasExtras:[],painelLayout:'classic',obraLayout:'classic',obraBtnLayout:'',obraBodyLayout:'',customThematicTags:[],hiddenThematicKeys:[]};
+  const defaults={theme:'duskwood',cfgLayout:'lay-classic',cfgTexture:'tex-default',cfgAnim:'anim-hover',cfgHD:'off',cfgProgress:'on',metaTarget:5,metaAno:50,wpm:200,privacy:'off',nightMode:'off',sessionTotalMin:0,sessionTodayMin:0,sessionDate:'',pastasDesc:{},pastasExtras:[],colLayout:'',colInnerLayout:'',painelLayout:'classic',obraLayout:'classic',obraBtnLayout:'',obraBodyLayout:'',customThematicTags:[],hiddenThematicKeys:[]};
   for(const[k,v]of Object.entries(defaults)){if(userGoals[k]===undefined)userGoals[k]=v;}
   if(userGoals.appFont)document.documentElement.style.setProperty('--app-font',userGoals.appFont);
   if(userGoals.appFontSize)document.documentElement.style.setProperty('--app-font-size',userGoals.appFontSize);
@@ -2755,6 +2883,8 @@ window.onload=async()=>{
   syncSel('inp-painel-layout-cfg',userGoals.painelLayout);aplicarLayoutPainel();
   syncSel('inp-obra-layout-cfg',userGoals.obraLayout);
   syncSel('inp-obra-body-layout-cfg',userGoals.obraBodyLayout||'');
+  if(_('inp-col-layout'))_('inp-col-layout').value=userGoals.colLayout||'';
+  if(_('inp-col-inner-layout'))_('inp-col-inner-layout').value=userGoals.colInnerLayout||'grid';
   syncSel('inp-obra-btn-layout-cfg',userGoals.obraBtnLayout||'');
   aplicarLayoutBotoesObra();
   syncSel('inp-font-cfg',userGoals.appFont||"'Nunito', sans-serif");
@@ -3741,7 +3871,11 @@ function renderPastas(){
   if(!entries.length){
     grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon"></div><p>Sem coleções criadas.<br><span style="font-size:11px;margin-top:4px;display:block;">Clique em "+ Nova" para criar uma.</span></p></div>`;
   }else{
-    grid.innerHTML=entries.map(([p,arr])=>{
+    // Apply col layout class
+  const allColLayouts=['col-layout-lista','col-layout-compact','col-layout-large','col-layout-banner','col-layout-neon','col-layout-glass','col-layout-minimal','col-layout-bento','col-layout-polaroid'];
+  grid.classList.remove(...allColLayouts);
+  if(userGoals.colLayout)grid.classList.add(userGoals.colLayout);
+  grid.innerHTML=entries.map(([p,arr])=>{
       const thumbs=arr.slice(0,3).filter(x=>x.cov).map(x=>`<div class="folder-thumb"><img src="${x.cov}" onerror="this.parentElement.remove()"></div>`).join('');
       const bg=arr.find(x=>x.cov);const desc=userGoals.pastasDesc?.[p]||'';
       const emptyIcon=arr.length===0?'<div class="folder-icon-empty"></div>':'';
@@ -3757,6 +3891,10 @@ function renderPastas(){
     }).join('');
     entries.forEach(([p])=>{const el=_('folder-'+encodeURIComponent(p));if(el)setupFolderDrop(el,p);});
   }
+  // restore col layout class after innerHTML rewrite
+  const allColLay2=['col-layout-lista','col-layout-compact','col-layout-large','col-layout-banner','col-layout-neon','col-layout-glass','col-layout-minimal','col-layout-bento','col-layout-polaroid'];
+  grid.classList.remove(...allColLay2);
+  if(userGoals.colLayout)grid.classList.add(userGoals.colLayout);
   grid.style.display='grid';_('pasta-aberta').style.display='none';
   _('btn-pasta-select-mode').style.display=db.length>0?'inline-flex':'none';
 }
@@ -3768,19 +3906,23 @@ function abrirPasta(p){
   const arr=db.filter(x=>{if(!x.fol)return false;return x.fol.split(',').map(f=>f.trim()).includes(p);});
   _('pasta-desc-text').innerText=currentPastaDesc;
   _('pasta-count-text').innerText=`${arr.length} obra${arr.length!==1?'s':''} nesta coleção`;
-  setPastaView(pastaViewMode||'grid');
+  const effectiveMode=userGoals.colInnerLayout||pastaViewMode||'grid';setPastaView(effectiveMode);
 }
 
 function setPastaView(mode){
   pastaViewMode=mode;
-  _('pasta-view-grid').style.borderColor=mode==='grid'?'var(--primary)':'var(--border)';
-  _('pasta-view-grid').style.color=mode==='grid'?'var(--primary)':'var(--text-muted)';
-  _('pasta-view-list').style.borderColor=mode==='list'?'var(--primary)':'var(--border)';
-  _('pasta-view-list').style.color=mode==='list'?'var(--primary)':'var(--text-muted)';
+  const sel=_('inp-col-inner-layout');if(sel)sel.value=mode;
   const arr=db.filter(x=>{if(!x.fol)return false;return x.fol.split(',').map(f=>f.trim()).includes(currentPasta);});
   const cont=_('grid-pasta-conteudo');
   if(!arr.length){cont.className='';cont.style.display='block';cont.style.flexDirection='';cont.style.gap='';cont.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><p>Pasta vazia.<br><span style="font-size:11px;">Clique em "+ Adicionar" para incluir obras.</span></p></div>`;return;}
-  if(mode==='grid'){
+  // inner layout class-based modes
+  const innerLayoutModes=['col-inner-covers','col-inner-magazine','col-inner-table','col-inner-ranked'];
+  if(innerLayoutModes.includes(mode)){
+    cont.className='col-inner-base '+mode;
+    cont.style.display='flex';cont.style.flexDirection='column';cont.style.gap='8px';
+    cont.innerHTML=arr.map(x=>{const pct=calcProgress(x);return `<div class="collection-item" draggable="true" data-id="${x.id}" onclick="openModal('${x.id}')"><div class="collection-item-thumb" style="background:${coverGradient(x)};"><img src="${x.cov||''}" onerror="this.style.display='none'"></div><div class="collection-item-info"><div class="collection-item-title">${x.tit}</div><div class="collection-item-meta">${x.aut||'—'} · ${x.sta||''} · Cap. ${x.cap||0}${x.capTotal?'/'+x.capTotal:''}${x.rat?` · ${x.rat}`:''}</div>${pct!==null?`<div class="collection-progress-mini"><div class="collection-progress-fill" style="width:${pct}%;background:var(--primary-grad);"></div></div>`:''}</div><span style="color:var(--text-muted);font-size:18px;">›</span></div>`;}).join('');
+    Array.from(cont.querySelectorAll('.collection-item')).forEach(el=>setupCollectionItemDrop(el,currentPasta));
+  } else if(mode==='grid'){
     cont.className=`grid ${userGoals.cfgLayout||'lay-classic'} ${userGoals.cfgTexture||'tex-default'} ${userGoals.cfgAnim||'anim-hover'}`;
     cont.style.display='';cont.style.flexDirection='';cont.style.gap='';
     cont.innerHTML=arr.map(x=>{const pct=calcProgress(x);return `<div class="card" draggable="true" data-id="${x.id}" onclick="openModal('${x.id}')"><div class="card-img-wrapper"><img src="${x.cov||''}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback-cover" style="display:none;background:${coverGradient(x)};">${x.tit}</div><div class="card-badge">${x.sta||''}</div>${x.fav==='1'?'<div class="card-fav-star"></div>':''}</div><div class="card-info"><div class="card-title">${x.tit}</div><div class="card-author">${x.aut||''}</div>${pct!==null?`<div class="card-progress"><div class="card-progress-bar"><div class="card-progress-fill" style="width:${pct}%;background:var(--primary-grad);"></div></div><div class="card-progress-text">${pct}%</div></div>`:''}</div></div>`;}).join('');
@@ -3793,6 +3935,17 @@ function setPastaView(mode){
   if(_('pasta-count-text'))_('pasta-count-text').innerText=`${arr.length} obra${arr.length!==1?'s':''} nesta coleção`;
 }
 
+function setColLayout(val){
+  userGoals.colLayout=val;saveAllData();
+  const grid=_('grid-pastas');if(!grid)return;
+  const allColLayouts=['col-layout-lista','col-layout-compact','col-layout-large','col-layout-banner','col-layout-neon','col-layout-glass','col-layout-minimal','col-layout-bento','col-layout-polaroid'];
+  grid.classList.remove(...allColLayouts);
+  if(val)grid.classList.add(val);
+}
+function setColInnerLayout(val){
+  userGoals.colInnerLayout=val;saveAllData();
+  setPastaView(val||'grid');
+}
 function fecharPasta(){_('pasta-aberta').style.display='none';_('grid-pastas').style.display='grid';currentPasta='';}
 
 function renomearPasta(){
@@ -4181,4 +4334,4 @@ function limparCacheImagens(){if(!confirm('Remover capas locais?'))return;let ct
 function resetDatabase(){if(prompt(" Digite DELETAR TUDO:")==='DELETAR TUDO'){idb.set('db',[]);idb.set('goals',{});idb.set('lixeira',[]);idb.set('wishlist',[]);alert('Recarregando...');location.reload();}}
 </script>
 </body>
-        </html>
+          </html>
