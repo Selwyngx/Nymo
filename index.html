@@ -527,6 +527,378 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 .mob-more-item.del-item:hover{background:rgba(255,23,68,.06);color:var(--danger);}
 .mob-more-item-icon{font-size:18px;width:24px;text-align:center;}
 
+/* =====================================================
+   LAYOUTS DO CORPO DA JANELA DE OBRA (mob-body)
+   Controlados pela classe obra-body-* em #m-cont-scroll
+   ===================================================== */
+
+/* ── PADRÃO (sem classe extra) — grade 2 colunas, já existente ── */
+
+/* ── CORPO: LISTA — info em linha horizontal compacta ── */
+.obra-body-lista .mob-info-grid{display:flex;flex-direction:column;gap:0;}
+.obra-body-lista .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;border-radius:0;border-left:none;border-right:none;border-top:none;border-bottom:1px solid rgba(255,255,255,.06);background:transparent;padding:10px 2px;}
+.obra-body-lista .mob-info-card:last-child{border-bottom:none;}
+.obra-body-lista .mob-info-card.span2{flex-direction:row;}
+.obra-body-lista .mob-ic-lbl{font-size:11px;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.3px;text-transform:none;}
+.obra-body-lista .mob-ic-val{font-size:12px;text-align:right;}
+.obra-body-lista .mob-syn-box{border-radius:0;border-left:none;border-right:none;background:transparent;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:14px 2px;}
+.obra-body-lista .mob-rev-box{border-radius:0;border-left:3px solid var(--primary);border-right:none;padding:12px 14px;}
+.obra-body-lista .mob-sim-grid{grid-template-columns:1fr;gap:0;}
+.obra-body-lista .mob-sim-card{border-radius:0;border-left:none;border-right:none;border-top:none;border-bottom:1px solid rgba(255,255,255,.05);display:flex;flex-direction:row;align-items:center;gap:12px;background:transparent;}
+.obra-body-lista .mob-sim-img{width:46px;height:68px;object-fit:cover;flex-shrink:0;border-radius:6px;}
+.obra-body-lista .mob-sim-name{padding:0;font-size:12px;font-weight:700;}
+
+/* ── CORPO: FICHA — estilo tabela técnica, bordas finas, fundo neutro ── */
+.obra-body-ficha .mob-info-grid{display:flex;flex-direction:column;gap:0;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;}
+.obra-body-ficha .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;border-radius:0;border:none;border-bottom:1px solid rgba(255,255,255,.05);background:transparent;padding:9px 12px;}
+.obra-body-ficha .mob-info-card:last-child{border-bottom:none;}
+.obra-body-ficha .mob-info-card:nth-child(odd){background:rgba(255,255,255,.015);}
+.obra-body-ficha .mob-info-card.span2{flex-direction:row;}
+.obra-body-ficha .mob-ic-lbl{font-size:10px;color:rgba(255,255,255,.35);text-transform:none;letter-spacing:.2px;}
+.obra-body-ficha .mob-ic-val{font-size:12px;}
+.obra-body-ficha .mob-syn-box{border:none;border-top:2px solid var(--primary);border-radius:0;background:rgba(255,255,255,.02);padding:14px 14px;}
+.obra-body-ficha .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px;}
+.obra-body-ficha .mob-sim-card{border-radius:6px;}
+
+/* ── CORPO: MAGAZINE — cards de info em destaque, texto grande ── */
+.obra-body-magazine .mob-info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.obra-body-magazine .mob-info-card{background:rgba(255,255,255,.05);border:none;border-radius:14px;padding:14px 14px;align-items:flex-start;}
+.obra-body-magazine .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-magazine .mob-ic-lbl{font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.3);margin-bottom:4px;}
+.obra-body-magazine .mob-ic-val{font-size:16px;font-weight:900;color:#fff;white-space:normal;}
+.obra-body-magazine .mob-syn-box{background:rgba(255,255,255,.04);border:none;border-radius:16px;font-size:14px;line-height:1.9;padding:18px;}
+.obra-body-magazine .mob-rev-box{border-left:4px solid var(--primary);background:rgba(255,255,255,.03);border-radius:0 16px 16px 0;font-size:14px;padding:16px 18px;}
+.obra-body-magazine .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;}
+.obra-body-magazine .mob-sim-card{border-radius:12px;}
+.obra-body-magazine .mob-sim-name{font-size:11px;padding:7px 8px 9px;}
+
+/* ── CORPO: MINIMALISTA — só texto, sem caixas, espaço limpo ── */
+.obra-body-minimal .mob-info-grid{display:flex;flex-direction:column;gap:6px;background:none;border:none;}
+.obra-body-minimal .mob-info-card{flex-direction:row;align-items:baseline;justify-content:space-between;background:none;border:none;border-bottom:1px solid rgba(255,255,255,.04);border-radius:0;padding:7px 0;}
+.obra-body-minimal .mob-info-card:last-child{border-bottom:none;}
+.obra-body-minimal .mob-info-card.span2{flex-direction:column;align-items:flex-start;gap:2px;}
+.obra-body-minimal .mob-ic-lbl{font-size:10px;color:rgba(255,255,255,.3);text-transform:none;letter-spacing:.2px;}
+.obra-body-minimal .mob-ic-val{font-size:12px;font-weight:700;color:rgba(255,255,255,.75);}
+.obra-body-minimal .mob-syn-box{background:none;border:none;border-left:2px solid rgba(255,255,255,.1);border-radius:0;padding:4px 14px;font-size:13px;color:rgba(255,255,255,.45);}
+.obra-body-minimal .mob-rev-box{background:none;border:none;border-left:2px solid var(--primary);border-radius:0;padding:4px 14px;}
+.obra-body-minimal .mob-sec-title{color:rgba(255,255,255,.2);}
+.obra-body-minimal .mob-sim-grid{grid-template-columns:1fr;gap:0;}
+.obra-body-minimal .mob-sim-card{background:none;border:none;border-bottom:1px solid rgba(255,255,255,.04);border-radius:0;display:flex;flex-direction:row;align-items:center;gap:10px;}
+.obra-body-minimal .mob-sim-img{width:36px;height:52px;border-radius:4px;flex-shrink:0;}
+.obra-body-minimal .mob-sim-name{padding:0;font-size:12px;color:rgba(255,255,255,.55);}
+
+/* ── CORPO: DASHBOARD — métricas em destaque estilo analytics ── */
+.obra-body-dashboard .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-dashboard .mob-info-card{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;position:relative;overflow:hidden;}
+.obra-body-dashboard .mob-info-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--primary-grad);opacity:.5;}
+.obra-body-dashboard .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-dashboard .mob-ic-lbl{font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.28);text-transform:uppercase;margin-bottom:6px;}
+.obra-body-dashboard .mob-ic-val{font-size:20px;font-weight:900;color:#fff;}
+.obra-body-dashboard .mob-ic-val.red{font-size:20px;}
+.obra-body-dashboard .mob-ic-val.gold{font-size:20px;}
+.obra-body-dashboard .mob-syn-box{border:1px solid rgba(255,255,255,.07);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));font-size:13px;line-height:1.8;}
+.obra-body-dashboard .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-dashboard .mob-sim-card{border-radius:10px;border:1px solid rgba(255,255,255,.08);}
+
+/* ===== OBRA BODY — FEED ===== */
+.obra-body-feed .mob-info-grid{display:flex;flex-direction:column;gap:10px;}
+.obra-body-feed .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:none;border-radius:10px;padding:11px 14px;}
+.obra-body-feed .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-feed .mob-ic-lbl{font-size:10px;color:rgba(255,255,255,.35);text-transform:none;}
+.obra-body-feed .mob-ic-val{font-size:13px;font-weight:800;}
+.obra-body-feed .mob-syn-box{background:rgba(255,255,255,.03);border:none;border-radius:14px;padding:16px;font-size:14px;line-height:1.8;}
+.obra-body-feed .mob-rev-box{background:rgba(255,255,255,.03);border:none;border-left:3px solid var(--primary);border-radius:0 14px 14px 0;padding:14px 16px;}
+.obra-body-feed .mob-sim-grid{grid-template-columns:1fr;gap:10px;}
+.obra-body-feed .mob-sim-card{display:flex;flex-direction:row;align-items:center;gap:14px;border-radius:12px;background:rgba(255,255,255,.03);border:none;}
+.obra-body-feed .mob-sim-img{width:52px;height:76px;object-fit:cover;flex-shrink:0;border-radius:8px;}
+.obra-body-feed .mob-sim-name{padding:0;font-size:13px;font-weight:700;}
+
+/* ===== OBRA BODY — NEON ===== */
+.obra-body-neon .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-neon .mob-info-card{background:#050505;border:1px solid var(--primary);border-radius:8px;padding:12px;box-shadow:0 0 10px var(--primary-glow),inset 0 0 8px rgba(0,0,0,.6);}
+.obra-body-neon .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-neon .mob-ic-lbl{font-size:9px;letter-spacing:1.5px;color:var(--primary);text-shadow:0 0 8px var(--primary);text-transform:uppercase;}
+.obra-body-neon .mob-ic-val{font-size:14px;font-weight:900;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.4);}
+.obra-body-neon .mob-syn-box{background:#050505;border:1px solid var(--primary);border-radius:8px;box-shadow:0 0 12px var(--primary-glow);font-size:13px;line-height:1.8;color:rgba(255,255,255,.8);}
+.obra-body-neon .mob-rev-box{background:#050505;border:1px solid rgba(255,255,255,.15);border-left:2px solid var(--primary);box-shadow:0 0 8px var(--primary-glow);border-radius:0 8px 8px 0;}
+.obra-body-neon .mob-sec-title{color:var(--primary);text-shadow:0 0 8px var(--primary);letter-spacing:1px;}
+.obra-body-neon .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-neon .mob-sim-card{border:1px solid var(--primary);box-shadow:0 0 8px var(--primary-glow);border-radius:8px;}
+
+/* ===== OBRA BODY — GLASS ===== */
+.obra-body-glass .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.obra-body-glass .mob-info-card{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;}
+.obra-body-glass .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-glass .mob-ic-lbl{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.8px;}
+.obra-body-glass .mob-ic-val{font-size:14px;font-weight:800;color:#fff;}
+.obra-body-glass .mob-syn-box{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:18px;font-size:13px;line-height:1.85;color:rgba(255,255,255,.8);}
+.obra-body-glass .mob-rev-box{background:rgba(255,255,255,.04);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--primary);border-radius:0 16px 16px 0;}
+.obra-body-glass .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px;}
+.obra-body-glass .mob-sim-card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:14px;}
+
+/* ===== OBRA BODY — SPOTIFY ===== */
+.obra-body-spotify .mob-info-grid{display:flex;flex-direction:column;gap:4px;}
+.obra-body-spotify .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:#121212;border:none;border-radius:8px;padding:11px 14px;}
+.obra-body-spotify .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-spotify .mob-ic-lbl{font-size:11px;color:#b3b3b3;text-transform:none;letter-spacing:0;}
+.obra-body-spotify .mob-ic-val{font-size:13px;font-weight:700;color:#fff;}
+.obra-body-spotify .mob-syn-box{background:#121212;border:none;border-radius:10px;font-size:13px;line-height:1.8;color:#b3b3b3;}
+.obra-body-spotify .mob-rev-box{background:#121212;border:none;border-left:3px solid var(--primary);border-radius:0 10px 10px 0;color:#b3b3b3;}
+.obra-body-spotify .mob-sec-title{font-size:11px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1.5px;}
+.obra-body-spotify .mob-sim-grid{grid-template-columns:1fr;gap:6px;}
+.obra-body-spotify .mob-sim-card{flex-direction:row;align-items:center;gap:12px;background:#121212;border:none;border-radius:8px;}
+.obra-body-spotify .mob-sim-img{width:48px;height:48px;object-fit:cover;flex-shrink:0;border-radius:4px;}
+.obra-body-spotify .mob-sim-name{padding:0;font-size:13px;font-weight:600;color:#fff;}
+
+/* ===== OBRA BODY — METALLIC ===== */
+.obra-body-metallic .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-metallic .mob-info-card{background:linear-gradient(145deg,#2a2a2a,#1a1a1a);border:1px solid #3a3a3a;border-top-color:#4a4a4a;border-radius:10px;padding:12px 14px;}
+.obra-body-metallic .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-metallic .mob-ic-lbl{font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;}
+.obra-body-metallic .mob-ic-val{font-size:14px;font-weight:900;color:#e0e0e0;}
+.obra-body-metallic .mob-syn-box{background:linear-gradient(145deg,#222,#181818);border:1px solid #333;border-top-color:#444;border-radius:12px;font-size:13px;line-height:1.8;color:#ccc;}
+.obra-body-metallic .mob-rev-box{background:linear-gradient(145deg,#222,#181818);border:1px solid #333;border-left:3px solid var(--primary);border-radius:0 12px 12px 0;color:#ccc;}
+.obra-body-metallic .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;}
+.obra-body-metallic .mob-sim-card{background:linear-gradient(145deg,#222,#181818);border:1px solid #3a3a3a;border-radius:10px;}
+
+/* ===== OBRA BODY — AURORA ===== */
+.obra-body-aurora .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.obra-body-aurora .mob-info-card{background:linear-gradient(135deg,rgba(0,255,150,.06),rgba(0,100,255,.06));border:1px solid rgba(100,255,200,.1);border-radius:14px;padding:13px 14px;box-shadow:0 0 14px rgba(0,200,100,.06);}
+.obra-body-aurora .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-aurora .mob-ic-lbl{font-size:9px;color:rgba(100,255,180,.5);letter-spacing:1px;text-transform:uppercase;}
+.obra-body-aurora .mob-ic-val{font-size:14px;font-weight:900;color:#e0ffe8;}
+.obra-body-aurora .mob-syn-box{background:linear-gradient(135deg,rgba(0,255,150,.04),rgba(0,100,255,.04));border:1px solid rgba(100,255,200,.08);border-radius:16px;font-size:13px;line-height:1.85;color:rgba(255,255,255,.8);}
+.obra-body-aurora .mob-rev-box{background:linear-gradient(135deg,rgba(0,255,150,.04),rgba(0,100,255,.04));border:1px solid rgba(100,255,200,.08);border-left:3px solid #00e676;border-radius:0 14px 14px 0;}
+.obra-body-aurora .mob-sec-title{color:#00e676;}
+.obra-body-aurora .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;}
+.obra-body-aurora .mob-sim-card{background:linear-gradient(135deg,rgba(0,255,150,.05),rgba(0,100,255,.05));border:1px solid rgba(100,255,200,.1);border-radius:12px;}
+
+/* ===== OBRA BODY — MIDNIGHT ===== */
+.obra-body-midnight .mob-info-grid{display:flex;flex-direction:column;gap:2px;font-family:'Fira Code',monospace;}
+.obra-body-midnight .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:#0a0a0a;border:none;border-bottom:1px solid #1a1a1a;border-radius:0;padding:9px 14px;}
+.obra-body-midnight .mob-info-card:first-child{border-top:1px solid #1a1a1a;}
+.obra-body-midnight .mob-info-card.span2{flex-direction:row;}
+.obra-body-midnight .mob-ic-lbl{font-size:10px;color:#00e676;font-family:'Fira Code',monospace;}
+.obra-body-midnight .mob-ic-lbl::before{content:'> ';}
+.obra-body-midnight .mob-ic-val{font-size:11px;color:#a0a0a0;font-family:'Fira Code',monospace;}
+.obra-body-midnight .mob-syn-box{background:#0a0a0a;border:none;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;border-radius:0;font-size:12px;line-height:1.9;color:#888;font-family:'Fira Code',monospace;}
+.obra-body-midnight .mob-rev-box{background:#0a0a0a;border-left:2px solid #00e676;border-radius:0;color:#888;font-family:'Fira Code',monospace;}
+.obra-body-midnight .mob-sec-title{color:#00e676;font-family:'Fira Code',monospace;font-size:11px;letter-spacing:1px;}
+.obra-body-midnight .mob-sim-grid{grid-template-columns:1fr;gap:2px;}
+.obra-body-midnight .mob-sim-card{background:#0a0a0a;border:none;border-bottom:1px solid #1a1a1a;border-radius:0;flex-direction:row;align-items:center;gap:10px;}
+.obra-body-midnight .mob-sim-img{width:36px;height:52px;border-radius:3px;flex-shrink:0;}
+.obra-body-midnight .mob-sim-name{padding:0;font-size:11px;color:#888;font-family:'Fira Code',monospace;}
+
+/* ===== OBRA BODY — ANILIST ===== */
+.obra-body-anilist .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-anilist .mob-info-card{background:#1a2035;border:1px solid #2a3550;border-radius:8px;padding:12px 14px;}
+.obra-body-anilist .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-anilist .mob-ic-lbl{font-size:9px;color:#5a7ab0;letter-spacing:.8px;text-transform:uppercase;}
+.obra-body-anilist .mob-ic-val{font-size:14px;font-weight:800;color:#e0e8ff;}
+.obra-body-anilist .mob-syn-box{background:#1a2035;border:1px solid #2a3550;border-radius:10px;font-size:13px;line-height:1.8;color:#a0b4d0;}
+.obra-body-anilist .mob-rev-box{background:#1a2035;border:1px solid #2a3550;border-left:3px solid #4fc3f7;border-radius:0 10px 10px 0;color:#a0b4d0;}
+.obra-body-anilist .mob-sec-title{color:#4fc3f7;}
+.obra-body-anilist .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-anilist .mob-sim-card{background:#1a2035;border:1px solid #2a3550;border-radius:8px;}
+
+/* ===== OBRA BODY — KAVITA ===== */
+.obra-body-kavita .mob-info-grid{display:flex;flex-direction:column;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;}
+.obra-body-kavita .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:#151515;border:none;border-bottom:1px solid rgba(255,255,255,.05);border-radius:0;padding:10px 14px;}
+.obra-body-kavita .mob-info-card:last-child{border-bottom:none;}
+.obra-body-kavita .mob-info-card.span2{flex-direction:row;}
+.obra-body-kavita .mob-ic-lbl{font-size:11px;color:#888;text-transform:none;letter-spacing:0;}
+.obra-body-kavita .mob-ic-val{font-size:12px;font-weight:700;color:#ddd;}
+.obra-body-kavita .mob-syn-box{background:#151515;border:1px solid rgba(255,255,255,.07);border-radius:12px;font-size:13px;line-height:1.8;color:#ccc;}
+.obra-body-kavita .mob-rev-box{background:#151515;border:1px solid rgba(255,255,255,.07);border-left:3px solid var(--primary);border-radius:0 12px 12px 0;color:#ccc;}
+.obra-body-kavita .mob-sec-title{font-size:12px;font-weight:900;color:#ddd;text-transform:none;letter-spacing:0;}
+.obra-body-kavita .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;}
+.obra-body-kavita .mob-sim-card{background:#151515;border:1px solid rgba(255,255,255,.07);border-radius:10px;}
+
+/* ===== OBRA BODY — EDITORIAL ===== */
+.obra-body-editorial .mob-info-grid{display:flex;flex-direction:column;gap:0;}
+.obra-body-editorial .mob-info-card{flex-direction:row;align-items:baseline;justify-content:space-between;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.08);border-radius:0;padding:10px 0;}
+.obra-body-editorial .mob-info-card.span2{flex-direction:column;gap:3px;}
+.obra-body-editorial .mob-ic-lbl{font-size:10px;color:rgba(255,255,255,.3);font-style:italic;text-transform:none;letter-spacing:.2px;}
+.obra-body-editorial .mob-ic-val{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);font-family:'Playfair Display',serif;}
+.obra-body-editorial .mob-syn-box{background:transparent;border:none;border-top:2px solid rgba(255,255,255,.1);border-bottom:2px solid rgba(255,255,255,.1);border-radius:0;font-size:14px;line-height:2;color:rgba(255,255,255,.75);font-family:'Lora',serif;font-style:italic;padding:16px 0;}
+.obra-body-editorial .mob-rev-box{background:transparent;border:none;border-left:3px solid var(--primary);border-radius:0;padding:6px 16px;font-family:'Lora',serif;font-style:italic;}
+.obra-body-editorial .mob-sec-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.9);text-transform:none;letter-spacing:0;}
+.obra-body-editorial .mob-sim-grid{grid-template-columns:1fr;gap:0;}
+.obra-body-editorial .mob-sim-card{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.06);border-radius:0;flex-direction:row;align-items:center;gap:12px;}
+.obra-body-editorial .mob-sim-img{width:44px;height:64px;border-radius:4px;flex-shrink:0;}
+.obra-body-editorial .mob-sim-name{padding:0;font-size:13px;font-family:'Playfair Display',serif;}
+
+/* ===== OBRA BODY — VINTAGE ===== */
+.obra-body-vintage .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-vintage .mob-info-card{background:#1c1508;border:1px solid #3a2e1a;border-radius:8px;padding:12px 14px;}
+.obra-body-vintage .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-vintage .mob-ic-lbl{font-size:9px;color:#6a5030;letter-spacing:1px;text-transform:uppercase;}
+.obra-body-vintage .mob-ic-val{font-size:14px;font-weight:800;color:#d4b483;font-family:'Merriweather',serif;}
+.obra-body-vintage .mob-syn-box{background:#1c1508;border:1px solid #3a2e1a;border-radius:10px;font-size:13px;line-height:1.9;color:#b09060;font-family:'Merriweather',serif;}
+.obra-body-vintage .mob-rev-box{background:#1c1508;border:1px solid #3a2e1a;border-left:3px solid #b07040;border-radius:0 10px 10px 0;color:#b09060;}
+.obra-body-vintage .mob-sec-title{color:#d4b483;font-family:'Merriweather',serif;font-size:13px;font-style:italic;}
+.obra-body-vintage .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-vintage .mob-sim-card{background:#1c1508;border:1px solid #3a2e1a;border-radius:8px;}
+
+/* ===== OBRA BODY — RETRO ===== */
+.obra-body-retro .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.obra-body-retro .mob-info-card{background:#0d0d0d;border:2px solid var(--primary);border-radius:0;padding:10px 12px;box-shadow:3px 3px 0 var(--primary);}
+.obra-body-retro .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-retro .mob-ic-lbl{font-size:9px;color:var(--primary);font-family:'Fira Code',monospace;letter-spacing:.5px;}
+.obra-body-retro .mob-ic-val{font-size:13px;font-weight:900;color:#fff;font-family:'Fira Code',monospace;}
+.obra-body-retro .mob-syn-box{background:#0d0d0d;border:2px solid var(--primary);border-radius:0;box-shadow:4px 4px 0 var(--primary);font-size:12px;line-height:1.9;color:#ccc;font-family:'Fira Code',monospace;}
+.obra-body-retro .mob-rev-box{background:#0d0d0d;border:2px solid var(--primary);border-radius:0;box-shadow:4px 4px 0 var(--primary);color:#ccc;font-family:'Fira Code',monospace;}
+.obra-body-retro .mob-sec-title{color:var(--primary);font-family:'Fira Code',monospace;font-size:11px;letter-spacing:1px;}
+.obra-body-retro .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px;}
+.obra-body-retro .mob-sim-card{background:#0d0d0d;border:2px solid var(--primary);border-radius:0;box-shadow:3px 3px 0 var(--primary);}
+
+/* ===== OBRA BODY — MANGÁ ===== */
+.obra-body-manga .mob-info-grid{display:flex;flex-direction:column;gap:0;filter:grayscale(1);}
+.obra-body-manga .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:#fff;border:none;border-bottom:2px solid #000;border-radius:0;padding:10px 14px;}
+.obra-body-manga .mob-info-card.span2{flex-direction:row;}
+.obra-body-manga .mob-ic-lbl{font-size:11px;color:#333;font-weight:900;text-transform:none;letter-spacing:0;}
+.obra-body-manga .mob-ic-val{font-size:12px;font-weight:700;color:#000;}
+.obra-body-manga .mob-syn-box{background:#fff;border:2px solid #000;border-radius:0;font-size:13px;line-height:1.85;color:#222;filter:grayscale(1);}
+.obra-body-manga .mob-rev-box{background:#f0f0f0;border:2px solid #000;border-left:4px solid #000;border-radius:0;color:#222;filter:grayscale(1);}
+.obra-body-manga .mob-sec-title{color:#000;font-size:14px;font-weight:900;text-transform:none;letter-spacing:0;}
+.obra-body-manga .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px;filter:grayscale(1);}
+.obra-body-manga .mob-sim-card{background:#fff;border:2px solid #000;border-radius:0;}
+.obra-body-manga .mob-sim-name{color:#000;}
+
+/* ===== OBRA BODY — POLAROID ===== */
+.obra-body-polaroid .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:4px;}
+.obra-body-polaroid .mob-info-card{background:#fafafa;border:1px solid #e0e0e0;border-radius:3px;padding:12px 10px 20px;box-shadow:2px 3px 10px rgba(0,0,0,.3);transform:rotate(-1deg);}
+.obra-body-polaroid .mob-info-card:nth-child(even){transform:rotate(1deg);}
+.obra-body-polaroid .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-polaroid .mob-ic-lbl{font-size:9px;color:#999;font-family:'Caveat',cursive;}
+.obra-body-polaroid .mob-ic-val{font-size:14px;font-weight:700;color:#333;font-family:'Caveat',cursive;}
+.obra-body-polaroid .mob-syn-box{background:#fafafa;border:1px solid #e0e0e0;border-radius:3px;box-shadow:2px 3px 10px rgba(0,0,0,.25);font-size:13px;line-height:1.8;color:#444;font-family:'Caveat',cursive;padding:16px 14px 28px;}
+.obra-body-polaroid .mob-rev-box{background:#fafafa;border:1px solid #e0e0e0;border-radius:3px;box-shadow:2px 3px 10px rgba(0,0,0,.25);color:#444;font-family:'Caveat',cursive;padding:14px 14px 24px;transform:rotate(.5deg);}
+.obra-body-polaroid .mob-sec-title{color:#888;font-family:'Caveat',cursive;font-size:15px;font-weight:600;text-transform:none;letter-spacing:0;}
+.obra-body-polaroid .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:14px;padding:4px;}
+.obra-body-polaroid .mob-sim-card{background:#fafafa;border:1px solid #e0e0e0;border-radius:3px;box-shadow:2px 3px 10px rgba(0,0,0,.3);transform:rotate(-1.5deg);padding-bottom:18px;}
+.obra-body-polaroid .mob-sim-card:nth-child(even){transform:rotate(1.5deg);}
+.obra-body-polaroid .mob-sim-name{color:#333;font-family:'Caveat',cursive;}
+
+/* ===== OBRA BODY — SCRAPBOOK ===== */
+.obra-body-scrapbook .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:4px;}
+.obra-body-scrapbook .mob-info-card{background:linear-gradient(135deg,#1e1208,#2a1a08);border:2px solid #4a3018;border-radius:4px;padding:12px;box-shadow:2px 2px 8px rgba(0,0,0,.5);transform:rotate(-0.5deg);position:relative;}
+.obra-body-scrapbook .mob-info-card::before{content:'✦';position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:14px;color:var(--primary);}
+.obra-body-scrapbook .mob-info-card:nth-child(even){transform:rotate(.8deg);}
+.obra-body-scrapbook .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-scrapbook .mob-ic-lbl{font-size:9px;color:#8a6030;font-family:'Caveat',cursive;letter-spacing:.5px;}
+.obra-body-scrapbook .mob-ic-val{font-size:14px;font-weight:700;color:#d4a85a;font-family:'Caveat',cursive;}
+.obra-body-scrapbook .mob-syn-box{background:linear-gradient(135deg,#1e1208,#2a1a08);border:2px solid #4a3018;border-radius:4px;box-shadow:2px 2px 8px rgba(0,0,0,.5);font-size:13px;line-height:1.85;color:#c09050;font-family:'Caveat',cursive;transform:rotate(-.3deg);}
+.obra-body-scrapbook .mob-rev-box{background:linear-gradient(135deg,#1e1208,#2a1a08);border:2px solid #4a3018;border-left:4px solid var(--primary);border-radius:0 4px 4px 0;color:#c09050;font-family:'Caveat',cursive;}
+.obra-body-scrapbook .mob-sec-title{color:#d4a85a;font-family:'Caveat',cursive;font-size:16px;font-weight:600;text-transform:none;letter-spacing:0;}
+.obra-body-scrapbook .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:12px;padding:4px;}
+.obra-body-scrapbook .mob-sim-card{background:linear-gradient(135deg,#1e1208,#2a1a08);border:2px solid #4a3018;border-radius:4px;box-shadow:2px 2px 8px rgba(0,0,0,.5);transform:rotate(-1deg);}
+.obra-body-scrapbook .mob-sim-card:nth-child(even){transform:rotate(1deg);}
+.obra-body-scrapbook .mob-sim-name{color:#d4a85a;font-family:'Caveat',cursive;}
+
+/* LAYOUT: Bento (grade assimétrica) */
+.obra-body-bento .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.obra-body-bento .mob-info-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:14px;transition:transform .2s;}
+.obra-body-bento .mob-info-card:nth-child(1){grid-column:span 2;border-radius:28px;padding:20px;}
+.obra-body-bento .mob-info-card:nth-child(1) .mob-ic-val{font-size:22px;font-weight:900;}
+.obra-body-bento .mob-info-card.span2{flex-direction:column;align-items:flex-start;border-radius:28px;}
+.obra-body-bento .mob-ic-lbl{font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.3);}
+.obra-body-bento .mob-ic-val{font-size:16px;font-weight:800;}
+.obra-body-bento .mob-syn-box{border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);padding:20px;font-size:14px;line-height:1.85;}
+.obra-body-bento .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px;}
+.obra-body-bento .mob-sim-card{border-radius:18px;}
+
+/* LAYOUT: Pastel (cores suaves) */
+.obra-body-pastel .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-pastel .mob-info-card{background:rgba(255,200,220,.06);border:1px solid rgba(255,180,200,.12);border-radius:16px;padding:12px;}
+.obra-body-pastel .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-pastel .mob-ic-lbl{font-size:9px;color:rgba(255,160,200,.5);letter-spacing:.8px;}
+.obra-body-pastel .mob-ic-val{font-size:13px;font-weight:700;color:rgba(255,220,235,.85);}
+.obra-body-pastel .mob-syn-box{background:rgba(255,200,220,.04);border:1px solid rgba(255,180,200,.1);border-radius:16px;font-size:13px;line-height:1.85;color:rgba(255,220,235,.7);}
+.obra-body-pastel .mob-sec-title{color:rgba(255,160,200,.6);}
+.obra-body-pastel .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-pastel .mob-sim-card{border:1px solid rgba(255,180,200,.1);border-radius:14px;}
+
+/* LAYOUT: Webtoon (vertical strip) */
+.obra-body-webtoon .mob-info-grid{display:flex;flex-direction:column;gap:2px;border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;}
+.obra-body-webtoon .mob-info-card{flex-direction:row;align-items:center;justify-content:space-between;background:rgba(255,255,255,.02);border:none;border-bottom:1px solid rgba(255,255,255,.05);border-radius:0;padding:11px 14px;}
+.obra-body-webtoon .mob-info-card:last-child{border-bottom:none;}
+.obra-body-webtoon .mob-info-card.span2{flex-direction:row;}
+.obra-body-webtoon .mob-ic-lbl{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;text-transform:none;letter-spacing:0;}
+.obra-body-webtoon .mob-ic-val{font-size:12px;font-weight:700;color:#00bcd4;}
+.obra-body-webtoon .mob-syn-box{background:rgba(0,188,212,.04);border:1px solid rgba(0,188,212,.12);border-radius:14px;font-size:13px;line-height:1.9;color:rgba(255,255,255,.75);}
+.obra-body-webtoon .mob-sec-title{color:#00bcd4;font-size:11px;letter-spacing:.5px;}
+.obra-body-webtoon .mob-sim-grid{grid-template-columns:1fr;gap:6px;}
+.obra-body-webtoon .mob-sim-card{display:flex;flex-direction:row;align-items:center;gap:12px;background:rgba(255,255,255,.02);border:none;border-bottom:1px solid rgba(255,255,255,.05);border-radius:0;}
+.obra-body-webtoon .mob-sim-img{width:48px;height:70px;object-fit:cover;flex-shrink:0;border-radius:6px;}
+.obra-body-webtoon .mob-sim-name{padding:0;font-size:12px;}
+
+/* LAYOUT: Kodansha (mangá JP — preto e borda branca) */
+.obra-body-kodansha .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.obra-body-kodansha .mob-info-card{background:#0a0a0a;border:1.5px solid rgba(255,255,255,.15);border-radius:0;padding:10px 12px;}
+.obra-body-kodansha .mob-info-card.span2{flex-direction:row;align-items:center;justify-content:space-between;}
+.obra-body-kodansha .mob-ic-lbl{font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.8px;font-weight:700;}
+.obra-body-kodansha .mob-ic-val{font-size:14px;font-weight:900;color:#fff;}
+.obra-body-kodansha .mob-syn-box{background:#0a0a0a;border:1.5px solid rgba(255,255,255,.12);border-left:4px solid #fff;border-radius:0;font-size:13px;line-height:1.85;color:#bbb;}
+.obra-body-kodansha .mob-sec-title{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:#fff;}
+.obra-body-kodansha .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:4px;}
+.obra-body-kodansha .mob-sim-card{border:1.5px solid rgba(255,255,255,.1);border-radius:0;}
+
+/* LAYOUT: Arc (clean gradient) */
+.obra-body-arc .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.obra-body-arc .mob-info-card{background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:none;border-radius:14px;padding:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);}
+.obra-body-arc .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-arc .mob-ic-lbl{font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.5px;}
+.obra-body-arc .mob-ic-val{font-size:15px;font-weight:800;color:#fff;}
+.obra-body-arc .mob-syn-box{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.01));border:none;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.07);font-size:14px;line-height:1.85;}
+.obra-body-arc .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;}
+.obra-body-arc .mob-sim-card{border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.01));border:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.07);}
+
+/* LAYOUT: Tapas (cartoons coloridos) */
+.obra-body-tapas .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-tapas .mob-info-card{background:rgba(255,150,50,.06);border:1.5px solid rgba(255,150,50,.18);border-radius:12px;padding:12px;}
+.obra-body-tapas .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-tapas .mob-ic-lbl{font-size:9px;color:rgba(255,150,50,.5);letter-spacing:.5px;font-weight:700;}
+.obra-body-tapas .mob-ic-val{font-size:13px;font-weight:800;color:#ffaa55;}
+.obra-body-tapas .mob-syn-box{background:rgba(255,150,50,.04);border:1.5px solid rgba(255,150,50,.14);border-radius:14px;font-size:13px;line-height:1.85;color:rgba(255,220,180,.8);}
+.obra-body-tapas .mob-sec-title{color:#ffaa55;font-weight:900;}
+.obra-body-tapas .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-tapas .mob-sim-card{border:1.5px solid rgba(255,150,50,.15);border-radius:12px;}
+
+/* LAYOUT: Lezhin (noir premium) */
+.obra-body-lezhin .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.obra-body-lezhin .mob-info-card{background:#111;border:1px solid #2a2a2a;border-radius:4px;padding:12px;}
+.obra-body-lezhin .mob-info-card.span2{flex-direction:row;align-items:center;justify-content:space-between;}
+.obra-body-lezhin .mob-ic-lbl{font-size:8px;color:#555;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.obra-body-lezhin .mob-ic-val{font-size:14px;font-weight:700;color:#e8c96a;}
+.obra-body-lezhin .mob-syn-box{background:#111;border:1px solid #2a2a2a;border-left:3px solid #e8c96a;border-radius:0;font-size:13px;line-height:1.85;color:#999;}
+.obra-body-lezhin .mob-sec-title{color:#e8c96a;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:1px;}
+.obra-body-lezhin .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:4px;}
+.obra-body-lezhin .mob-sim-card{border:1px solid #2a2a2a;border-radius:4px;}
+
+/* LAYOUT: Bilibili (azul manga) */
+.obra-body-bilibili .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.obra-body-bilibili .mob-info-card{background:rgba(0,150,255,.06);border:1px solid rgba(0,150,255,.15);border-radius:12px;padding:12px;}
+.obra-body-bilibili .mob-info-card.span2{flex-direction:column;align-items:flex-start;}
+.obra-body-bilibili .mob-ic-lbl{font-size:9px;color:rgba(0,150,255,.5);font-weight:700;letter-spacing:.3px;}
+.obra-body-bilibili .mob-ic-val{font-size:13px;font-weight:800;color:#4db5ff;}
+.obra-body-bilibili .mob-syn-box{background:rgba(0,150,255,.04);border:1px solid rgba(0,150,255,.12);border-radius:12px;font-size:13px;line-height:1.85;color:rgba(180,220,255,.8);}
+.obra-body-bilibili .mob-sec-title{color:#4db5ff;font-weight:900;}
+.obra-body-bilibili .mob-sim-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.obra-body-bilibili .mob-sim-card{border:1px solid rgba(0,150,255,.12);border-radius:10px;}
+
+/* ===== PAINEL DE PERSONALIZAÇÃO INLINE DA OBRA ===== */
+.mob-custom-panel{display:none;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 14px 10px;margin-top:0;animation:fadeIn .18s ease;}
+.mob-custom-panel.open{display:block;}
+.mob-custom-panel-title{font-size:9px;font-weight:900;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.mob-custom-panel-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
+.mob-custom-row{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.mob-custom-lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+.mob-custom-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.mob-custom-chip{padding:5px 11px;border-radius:20px;font-size:10px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);cursor:pointer;transition:.15s;white-space:nowrap;touch-action:manipulation;}
+.mob-custom-chip.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);}
+.mob-custom-chip:active{transform:scale(.95);}
+
 /* ===== LAYOUTS DOS BOTÕES DA JANELA DE OBRA ===== */
 
 /* PADRÃO: já definido em mob-act-main acima */
@@ -565,6 +937,30 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 /* LAYOUT: Glass — glassmorphism nos botões */
 .obra-btn-glass .mob-act-main{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.15);border-radius:16px;}
 .obra-btn-glass .mob-act-more-btn{background:rgba(255,255,255,.05);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.12);border-radius:16px;}
+
+/* LAYOUT: Retro — estilo anos 80 */
+.obra-btn-retro .mob-act-main{background:#111;border:2px solid var(--primary);border-radius:0;font-family:'Fira Code',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;box-shadow:3px 3px 0 var(--primary);}
+.obra-btn-retro .mob-act-main .act-icon{font-size:16px;color:var(--primary);}
+.obra-btn-retro .mob-act-more-btn{background:#111;border:2px solid rgba(255,255,255,.3);border-radius:0;box-shadow:2px 2px 0 rgba(255,255,255,.2);}
+
+/* LAYOUT: Flat — sem bordas, fundo chapado */
+.obra-btn-flat .mob-act-main{background:rgba(255,255,255,.07);border:none;border-radius:12px;box-shadow:none;}
+.obra-btn-flat .mob-act-main:hover{background:rgba(255,255,255,.12);}
+.obra-btn-flat .mob-act-more-btn{background:rgba(255,255,255,.05);border:none;border-radius:12px;}
+
+/* LAYOUT: Outline — apenas contorno colorido */
+.obra-btn-outline .mob-act-main{background:transparent;border:1.5px solid var(--primary);border-radius:12px;color:var(--primary);}
+.obra-btn-outline .mob-act-main .act-icon{color:var(--primary);}
+.obra-btn-outline .mob-act-more-btn{background:transparent;border:1.5px solid rgba(255,255,255,.2);border-radius:12px;}
+
+/* LAYOUT: Gradient — gradiente animado */
+.obra-btn-gradient .mob-act-main{background:linear-gradient(135deg,var(--primary),color-mix(in srgb,var(--primary) 60%,#fff));border:none;border-radius:14px;color:#fff;font-weight:900;box-shadow:0 4px 20px var(--primary-glow);}
+.obra-btn-gradient .mob-act-more-btn{background:rgba(255,255,255,.1);border:none;border-radius:14px;}
+
+/* LAYOUT: Square — ícone só, quadrado */
+.obra-btn-square .mob-act-main{border-radius:8px;padding:0;width:52px;height:52px;flex-direction:column;gap:2px;font-size:9px;}
+.obra-btn-square .mob-act-main .act-icon{font-size:22px;}
+.obra-btn-square .mob-act-more-btn{border-radius:8px;height:52px;min-width:52px;}
 
 /* INFO GRID — COMPACTO (FIX: botões menores) */
 .mob-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
@@ -752,6 +1148,112 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 .obra-skin-mangaplus .mob-title{font-size:17px;font-weight:900;letter-spacing:-.2px;line-height:1.2;}
 .obra-skin-mangaplus .mob-tipo{background:var(--primary);color:#fff;border:none;border-radius:2px;letter-spacing:1.5px;}
 
+/* OBRA SKIN: SPOTIFY — capa pequena à esquerda, fundo chapado preto, gradiente sutil */
+.obra-skin-spotify #mob-hero{height:auto;}
+.obra-skin-spotify .mob-hero-bg{display:none;}
+.obra-skin-spotify .mob-hero-overlay{display:none;}
+.obra-skin-spotify .mob-hero-content{position:static;flex-direction:row;align-items:center;padding:56px 18px 22px;gap:18px;background:linear-gradient(160deg,#121212,#0a0a0a);border-bottom:1px solid rgba(255,255,255,.06);}
+.obra-skin-spotify .mob-cover,.obra-skin-spotify .mob-cover-fallback{width:96px;height:96px;border-radius:6px;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,.9);}
+.obra-skin-spotify .mob-title-col{display:flex;flex-direction:column;justify-content:center;}
+.obra-skin-spotify .mob-title{font-size:18px;font-weight:900;letter-spacing:-.2px;line-height:1.2;}
+.obra-skin-spotify .mob-author{color:#1db954;font-weight:700;}
+.obra-skin-spotify .mob-tipo{background:#1db954;color:#000;border:none;font-weight:900;}
+
+/* OBRA SKIN: RETRO — visual 8-bit / game boy com pixelado e borda pontilhada */
+.obra-skin-retro #mob-hero{height:auto;}
+.obra-skin-retro .mob-hero-bg{display:none;}
+.obra-skin-retro .mob-hero-overlay{display:none;}
+.obra-skin-retro .mob-hero-content{position:static;flex-direction:column;align-items:center;text-align:center;padding:56px 20px 20px;background:#0f0f1a;border-bottom:3px dashed var(--primary);}
+.obra-skin-retro .mob-cover,.obra-skin-retro .mob-cover-fallback{width:88px;height:130px;border-radius:0;image-rendering:pixelated;border:3px solid var(--primary);margin-bottom:10px;box-shadow:4px 4px 0 var(--primary);}
+.obra-skin-retro .mob-title-col{width:100%;}
+.obra-skin-retro .mob-title{font-family:'Fira Code',monospace;font-size:14px;text-transform:uppercase;letter-spacing:2px;text-shadow:2px 2px 0 var(--primary);}
+.obra-skin-retro .mob-author{font-family:'Fira Code',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;justify-content:center;color:var(--primary);}
+.obra-skin-retro .mob-tipo{border-radius:0;font-family:'Fira Code',monospace;letter-spacing:3px;border-color:var(--primary);background:transparent;color:var(--primary);}
+.obra-skin-retro .mob-stars{justify-content:center;}
+
+/* OBRA SKIN: VINTAGE — tom sépia, tipografia serifada, borda ornamental */
+.obra-skin-vintage #mob-hero{height:auto;}
+.obra-skin-vintage .mob-hero-bg{display:none;}
+.obra-skin-vintage .mob-hero-overlay{display:none;}
+.obra-skin-vintage .mob-hero-content{position:static;flex-direction:column;align-items:center;text-align:center;padding:56px 24px 24px;background:linear-gradient(160deg,#1a1508,#110e04);border-bottom:2px solid #b5892a;}
+.obra-skin-vintage .mob-cover,.obra-skin-vintage .mob-cover-fallback{width:84px;height:126px;border-radius:0;border:2px solid #b5892a;margin-bottom:12px;box-shadow:3px 3px 0 rgba(181,137,42,.3),6px 6px 0 rgba(181,137,42,.1);filter:sepia(.5);}
+.obra-skin-vintage .mob-title-col{width:100%;}
+.obra-skin-vintage .mob-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:.3px;color:#e8d5a0;}
+.obra-skin-vintage .mob-author{font-family:'EB Garamond',serif;font-size:13px;color:#b5892a;letter-spacing:1px;justify-content:center;font-style:italic;}
+.obra-skin-vintage .mob-tipo{border-color:#b5892a;color:#b5892a;background:transparent;border-radius:0;letter-spacing:3px;font-size:8px;}
+.obra-skin-vintage .mob-stars{justify-content:center;}
+
+/* OBRA SKIN: POLAROID — foto instantânea, borda branca/off-white, sombra suave */
+.obra-skin-polaroid #mob-hero{height:auto;}
+.obra-skin-polaroid .mob-hero-bg{display:none;}
+.obra-skin-polaroid .mob-hero-overlay{display:none;}
+.obra-skin-polaroid .mob-hero-content{position:static;flex-direction:column;align-items:center;text-align:center;padding:56px 20px 24px;background:#111;}
+.obra-skin-polaroid .mob-cover,.obra-skin-polaroid .mob-cover-fallback{width:110px;height:140px;border-radius:0;border:8px solid #f2f0eb;border-bottom:28px solid #f2f0eb;margin-bottom:12px;box-shadow:0 8px 32px rgba(0,0,0,.8);}
+.obra-skin-polaroid .mob-title-col{width:100%;}
+.obra-skin-polaroid .mob-title{font-family:'Caveat',cursive;font-size:22px;color:#f2f0eb;letter-spacing:.3px;}
+.obra-skin-polaroid .mob-author{font-family:'Caveat',cursive;font-size:14px;color:rgba(242,240,235,.55);justify-content:center;}
+.obra-skin-polaroid .mob-tipo{background:#f2f0eb;color:#111;border:none;border-radius:0;font-size:8px;letter-spacing:2px;}
+.obra-skin-polaroid .mob-stars{justify-content:center;}
+
+/* OBRA SKIN: ARC — estilo Arc Browser, gradiente suave pastel sobre a capa, extremamente limpo */
+.obra-skin-arc #mob-hero{height:340px;}
+.obra-skin-arc .mob-hero-bg{filter:blur(40px) brightness(.35) saturate(2);transform:scale(1.25);}
+.obra-skin-arc .mob-hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.0) 0%,rgba(5,5,5,.5) 50%,#050505 100%);}
+.obra-skin-arc .mob-hero-content{position:absolute;bottom:0;left:0;right:0;padding:20px 20px 26px;gap:16px;align-items:flex-end;}
+.obra-skin-arc .mob-cover,.obra-skin-arc .mob-cover-fallback{width:80px;height:120px;border-radius:18px;box-shadow:0 12px 36px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.12);}
+.obra-skin-arc .mob-title-col{flex:1;}
+.obra-skin-arc .mob-title{font-size:20px;font-weight:900;letter-spacing:-.3px;}
+.obra-skin-arc .mob-tipo{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.15);color:#fff;border-radius:20px;}
+
+/* OBRA SKIN: KODANSHA — estilo mangá JP, barra vermelha no topo, tipografia compacta */
+.obra-skin-kodansha #mob-hero{height:auto;}
+.obra-skin-kodansha .mob-hero-bg{display:none;}
+.obra-skin-kodansha .mob-hero-overlay{display:none;}
+.obra-skin-kodansha .mob-hero-content{position:static;flex-direction:row;align-items:center;padding:52px 16px 16px;gap:14px;background:#fff;border-bottom:4px solid #e60012;}
+.obra-skin-kodansha .mob-cover,.obra-skin-kodansha .mob-cover-fallback{width:80px;height:116px;border-radius:0;flex-shrink:0;box-shadow:2px 2px 0 #e60012;}
+.obra-skin-kodansha .mob-title-col{display:flex;flex-direction:column;justify-content:center;}
+.obra-skin-kodansha .mob-title{font-size:18px;font-weight:900;color:#111;letter-spacing:-.2px;text-shadow:none;}
+.obra-skin-kodansha .mob-author{color:#e60012;font-weight:700;font-size:12px;}
+.obra-skin-kodansha .mob-tipo{background:#e60012;color:#fff;border:none;border-radius:2px;font-size:8px;letter-spacing:2px;}
+.obra-skin-kodansha .mob-stars .star{color:#e60012;}
+.obra-skin-kodansha .mob-stars .star.empty{color:rgba(0,0,0,.15);}
+
+/* OBRA SKIN: SCRAPBOOK — recortes, adesivos, colagem */
+.obra-skin-scrapbook #mob-hero{height:auto;}
+.obra-skin-scrapbook .mob-hero-bg{display:none;}
+.obra-skin-scrapbook .mob-hero-overlay{display:none;}
+.obra-skin-scrapbook .mob-hero-content{position:static;flex-direction:row;align-items:flex-start;padding:56px 16px 20px;gap:14px;background:linear-gradient(160deg,#13100d,#0c0b08);border-bottom:1px dashed rgba(255,255,255,.1);}
+.obra-skin-scrapbook .mob-cover,.obra-skin-scrapbook .mob-cover-fallback{width:90px;height:130px;flex-shrink:0;transform:rotate(-3deg);border:5px solid #f5f0e8;box-shadow:2px 2px 10px rgba(0,0,0,.8);border-radius:1px;}
+.obra-skin-scrapbook .mob-title-col{display:flex;flex-direction:column;justify-content:center;padding-top:8px;}
+.obra-skin-scrapbook .mob-title{font-family:'Caveat',cursive;font-size:22px;color:#f5f0e8;line-height:1.2;}
+.obra-skin-scrapbook .mob-author{font-family:'Caveat',cursive;color:var(--primary);font-size:14px;}
+.obra-skin-scrapbook .mob-tipo{background:#f5f0e8;color:#111;border:none;border-radius:2px;font-size:8px;letter-spacing:1px;transform:rotate(1deg);}
+
+
+
+
+/* ESPAÇAMENTO DOS CARDS */
+.grid.spacing-xs{gap:6px;}.grid.spacing-sm{gap:10px;}.grid.spacing-md{gap:16px;}.grid.spacing-lg{gap:22px;}.grid.spacing-xl{gap:30px;}
+/* FORMA DA CAPA */
+.grid.cover-square .fic-cover,.grid.cover-square .fic-cover-fallback,.grid.cover-square .card-img-wrapper,.grid.cover-square .card-img-wrapper img,.grid.cover-square .fallback-cover{border-radius:0!important;}
+.grid.cover-rounded .fic-cover,.grid.cover-rounded .fic-cover-fallback,.grid.cover-rounded .card-img-wrapper,.grid.cover-rounded .card-img-wrapper img,.grid.cover-rounded .fallback-cover{border-radius:12px!important;}
+.grid.cover-circle .fic-cover,.grid.cover-circle .fic-cover-fallback,.grid.cover-circle .card-img-wrapper,.grid.cover-circle .card-img-wrapper img,.grid.cover-circle .fallback-cover{border-radius:50%!important;aspect-ratio:1;object-fit:cover;}
+.grid.cover-pill .fic-cover,.grid.cover-pill .fic-cover-fallback,.grid.cover-pill .card-img-wrapper,.grid.cover-pill .card-img-wrapper img,.grid.cover-pill .fallback-cover{border-radius:999px!important;}
+/* SOMBRA DOS CARDS */
+.grid.shadow-none .fic-card,.grid.shadow-none .lay-card,.grid.shadow-none .card{box-shadow:none!important;}
+.grid.shadow-soft .fic-card,.grid.shadow-soft .lay-card,.grid.shadow-soft .card{box-shadow:0 2px 8px rgba(0,0,0,.25)!important;}
+.grid.shadow-hard .fic-card,.grid.shadow-hard .lay-card,.grid.shadow-hard .card{box-shadow:4px 4px 0 var(--primary)!important;}
+.grid.shadow-float .fic-card,.grid.shadow-float .lay-card,.grid.shadow-float .card{box-shadow:0 12px 32px rgba(0,0,0,.7)!important;}
+.grid.shadow-colored .fic-card,.grid.shadow-colored .lay-card,.grid.shadow-colored .card{box-shadow:0 6px 20px var(--primary-glow)!important;}
+/* OPACIDADE DO TÍTULO NOS CARDS */
+.grid.title-hidden .fic-title{opacity:0;transition:.2s;}.grid.title-hidden .fic-card:hover .fic-title{opacity:1;}
+.grid.title-top .fic-info{flex-direction:column-reverse;}
+/* RAIO DE BORDA DOS CARDS */
+.grid.radius-none .fic-card,.grid.radius-none .lay-card,.grid.radius-none .card{border-radius:0!important;}
+.grid.radius-sm .fic-card,.grid.radius-sm .lay-card,.grid.radius-sm .card{border-radius:6px!important;}
+.grid.radius-md .fic-card,.grid.radius-md .lay-card,.grid.radius-md .card{border-radius:12px!important;}
+.grid.radius-lg .fic-card,.grid.radius-lg .lay-card,.grid.radius-lg .card{border-radius:20px!important;}
+.grid.radius-xl .fic-card,.grid.radius-xl .lay-card,.grid.radius-xl .card{border-radius:32px!important;}
 
 .modal-generic .m-cont{background:var(--bg-surface);}
 .m-cont{background:var(--bg-surface);width:100%;max-width:560px;height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0;overflow-y:auto;overflow-x:hidden;position:relative;box-shadow:0 -8px 40px rgba(0,0,0,.9);display:flex;flex-direction:column;animation:slideUp .3s cubic-bezier(.175,.885,.32,1.1);border:1px solid var(--border);}
@@ -789,12 +1291,81 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 .xp-bar{background:var(--bg-elevated);height:5px;border-radius:3px;overflow:hidden;margin-top:8px;}
 .xp-bar-fill{background:var(--primary-grad);height:100%;transition:width .6s ease;}
 
-/* STATS */
+/* STATS (legado - mantido para compatibilidade) */
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .stat-chip{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 8px;text-align:center;}
 .stat-chip h4{font-size:9px;color:var(--text-muted);text-transform:uppercase;font-weight:700;letter-spacing:.3px;margin-bottom:4px;}
 .stat-chip p{font-size:17px;font-weight:900;color:var(--primary);}
 .stat-chip p.small{font-size:12px;}
+
+/* ===== DASHBOARD REDESIGN ===== */
+.dash-hero-sec{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--bg-surface) 0%,var(--bg-base) 100%);border-bottom:1px solid var(--border);}
+.dash-hero-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,var(--primary-soft) 0%,transparent 65%);pointer-events:none;}
+.dash-hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:28px 20px 20px;gap:8px;}
+.dash-avatar-ring-wrap{position:relative;width:96px;height:96px;flex-shrink:0;margin-bottom:4px;}
+.dash-xp-ring{position:absolute;inset:0;overflow:visible;filter:drop-shadow(0 0 6px var(--primary-glow));}
+.dash-avatar-inner{position:absolute;inset:8px;border-radius:50%;background:var(--bg-elevated);overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.08);}
+.dash-user-name{font-size:21px;font-weight:900;color:var(--text-main);letter-spacing:-.3px;}
+.dash-level-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted);font-weight:700;margin-top:2px;}
+.dash-level-sep{opacity:.35;}
+.dash-hero-xp-bar{width:140px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:6px;}
+.dash-hero-xp-fill{height:100%;background:var(--primary-grad);border-radius:2px;transition:width .6s ease;}
+/* Quick action buttons */
+.dash-qa-row{display:flex;gap:8px;padding:14px 0 4px;}
+.dash-qa-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 4px;cursor:pointer;transition:var(--transition);touch-action:manipulation;}
+.dash-qa-btn:active{transform:scale(.95);}
+.dash-qa-btn:hover,.dash-qa-btn:focus{border-color:var(--primary);background:var(--primary-soft);outline:none;}
+.dash-qa-icon{font-size:18px;line-height:1;}
+.dash-qa-lbl{font-size:9px;font-weight:700;color:var(--text-muted);white-space:nowrap;}
+.dash-qa-btn:hover .dash-qa-lbl{color:var(--primary);}
+/* Scrollable stat cards */
+.dash-stats-scroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:8px 0 4px;}
+.dash-stats-scroll::-webkit-scrollbar{display:none;}
+.dash-stat-card{flex-shrink:0;width:78px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 6px;text-align:center;position:relative;overflow:hidden;}
+.dash-stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--sc,var(--primary));}
+.dash-stat-icon{font-size:15px;margin-bottom:4px;line-height:1;}
+.dash-stat-val{font-size:17px;font-weight:900;color:var(--sc,var(--primary));line-height:1.1;margin-bottom:2px;}
+.dash-stat-val.sm{font-size:10px;line-height:1.3;}
+.dash-stat-lbl{font-size:8px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);font-weight:700;}
+/* Inline goals */
+.dash-goals-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;margin-top:8px;}
+.dash-goals-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--primary);margin-bottom:12px;}
+.dash-goal-item{margin-bottom:12px;}
+.dash-goal-item:last-child{margin-bottom:0;}
+.dash-goal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.dash-goal-name{font-size:12px;font-weight:700;}
+.dash-goal-ctrls{display:flex;align-items:center;gap:6px;}
+.dash-goal-ctrls .btn-s{width:26px;height:26px;padding:0;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.dash-goal-num{font-size:14px;font-weight:900;min-width:28px;text-align:center;}
+.dash-goal-bar{height:5px;background:var(--bg-elevated);border-radius:3px;overflow:hidden;}
+.dash-goal-fill{height:100%;border-radius:3px;transition:width .5s ease;}
+.dash-goal-sub{font-size:10px;color:var(--text-muted);margin-top:4px;}
+
+/* ===== ANALYTICS MODAL REDESIGN ===== */
+.anal-top-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.anal-big-chip{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 10px;text-align:center;position:relative;overflow:hidden;}
+.anal-big-chip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ac,var(--primary));}
+.anal-chip-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);font-weight:700;margin-bottom:6px;}
+.anal-chip-val{font-size:26px;font-weight:900;color:var(--ac,var(--text-main));line-height:1;}
+.anal-rings-row{display:flex;gap:10px;margin-bottom:14px;}
+.anal-ring-card{flex:1;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.anal-ring-svg{width:72px;height:72px;overflow:visible;}
+.anal-ring-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text-muted);text-align:center;}
+.anal-ring-val{font-size:16px;font-weight:900;color:var(--text-main);}
+.anal-section-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--primary);margin:12px 0 8px;display:flex;align-items:center;gap:6px;}
+.anal-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.anal-genre-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.anal-genre-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor;}
+.anal-genre-name{flex:0 0 80px;font-size:11px;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.anal-genre-track{flex:1;height:7px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden;}
+.anal-genre-fill{height:100%;border-radius:4px;transition:width .7s ease;}
+.anal-genre-count{font-size:11px;font-weight:900;min-width:52px;text-align:right;}
+.anal-insights-grid{display:flex;flex-direction:column;gap:0;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;}
+.anal-insight-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--border);}
+.anal-insight-row:last-child{border-bottom:none;}
+.anal-insight-lbl{font-size:11px;color:var(--text-muted);font-weight:600;}
+.anal-insight-val{font-size:11px;font-weight:900;text-align:right;max-width:55%;color:var(--text-main);}
+.anal-highlight{color:var(--primary);}
 
 /* COLEÇÕES */
 .folder-card{background:linear-gradient(135deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);cursor:pointer;overflow:hidden;position:relative;min-height:130px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;transition:var(--transition);}
@@ -972,6 +1543,28 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 #view-perfil.painel-accordion .panel-section.acc-open .panel-section-body{max-height:4000px;padding:0 14px 14px;}
 #view-perfil:not(.painel-accordion) .panel-section-header{display:none;}
 
+/* PAINEL: Float (abas flutuantes) */
+#view-perfil.painel-float .painel-content-wrap{position:relative;}
+#view-perfil.painel-float .panel-tabs{display:flex;flex-direction:row;overflow-x:auto;gap:6px;padding:0 0 12px;background:transparent;scrollbar-width:none;margin-bottom:4px;}
+#view-perfil.painel-float .panel-tab{white-space:nowrap;border-radius:999px;padding:8px 16px;font-size:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+#view-perfil.painel-float .panel-tab.active{background:var(--primary-grad);border-color:transparent;color:#fff;box-shadow:0 4px 14px var(--primary-glow);}
+
+/* PAINEL: Compact (abas finas) */
+#view-perfil.painel-compact .panel-tabs{gap:2px;padding:4px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.06);overflow-x:auto;scrollbar-width:none;margin-bottom:10px;}
+#view-perfil.painel-compact .panel-tab{border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;letter-spacing:.3px;background:transparent;border:none;white-space:nowrap;}
+#view-perfil.painel-compact .panel-tab.active{background:rgba(255,255,255,.1);}
+
+/* PAINEL: Neon (abas com borda brilhante) */
+#view-perfil.painel-neon .panel-tabs{background:#050505;border-bottom:1px solid var(--primary);box-shadow:0 0 14px var(--primary-glow);padding:8px 6px;overflow-x:auto;scrollbar-width:none;margin-bottom:12px;}
+#view-perfil.painel-neon .panel-tab{color:rgba(255,255,255,.4);border-radius:6px;padding:8px 14px;font-size:11px;white-space:nowrap;}
+#view-perfil.painel-neon .panel-tab.active{color:var(--primary);background:rgba(0,0,0,.4);border:1px solid var(--primary);box-shadow:0 0 10px var(--primary-glow);text-shadow:0 0 8px var(--primary);}
+
+/* PAINEL: Timeline (seções com linha vertical) */
+#view-perfil.painel-timeline .panel-section{position:relative;padding-left:24px;margin-bottom:16px;}
+#view-perfil.painel-timeline .panel-section::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary),rgba(255,255,255,.05));border-radius:2px;}
+#view-perfil.painel-timeline .panel-section::after{content:'';position:absolute;left:4px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--primary);box-shadow:0 0 8px var(--primary-glow);}
+#view-perfil.painel-timeline .panel-tabs{overflow-x:auto;scrollbar-width:none;margin-bottom:12px;}
+
 /* SESSÃO */
 .session-timer{background:linear-gradient(135deg,var(--bg-elevated),var(--bg-surface));border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;display:flex;align-items:center;gap:14px;}
 .session-time-display{font-size:28px;font-weight:900;color:var(--primary);font-family:'Fira Code',monospace;min-width:80px;}
@@ -1012,6 +1605,62 @@ body.night-mode{filter:sepia(.25) brightness(.88);}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 select option{background:var(--bg-elevated);}
+
+/* ============================================================ */
+/* ===== DASHBOARD CLEAN v11 — SEM EMOJIS, SEM ARCO-ÍRIS ===== */
+/* ============================================================ */
+
+/* Neutralizar cores no painel de stats */
+.dash-stat-val{color:var(--text-main) !important;}
+.dash-stat-card::after{background:var(--border) !important;}
+.dash-stat-icon{display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+.dash-stat-icon svg{width:16px;height:16px;stroke:var(--text-muted);fill:none;stroke-width:2;}
+
+/* Neutralizar cores nos goals */
+.dash-goal-name{color:var(--text-main) !important;}
+#p-streak{color:var(--text-muted) !important;}
+
+/* Limpar ícones dos quick actions */
+.dash-qa-icon{display:flex;align-items:center;justify-content:center;font-size:0;}
+.dash-qa-icon svg{width:20px;height:20px;stroke:var(--text-muted);fill:none;stroke-width:1.8;transition:stroke var(--transition);}
+.dash-qa-btn:hover .dash-qa-icon svg,
+.dash-qa-btn:focus .dash-qa-icon svg{stroke:var(--primary);}
+
+/* Ícones do nav */
+.tab-icon{display:flex;align-items:center;justify-content:center;font-size:0;}
+.tab-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;}
+
+/* ===== GRADE DE FUNCIONALIDADES ESTILO SKOOB ===== */
+.dash-feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 6px;}
+.dash-feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 14px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;cursor:pointer;transition:border-color var(--transition),background var(--transition);touch-action:manipulation;}
+.dash-feature-card:hover,.dash-feature-card:active{border-color:var(--border-hover);background:var(--bg-elevated);}
+.dash-feature-icon{width:38px;height:38px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color var(--transition);}
+.dash-feature-card:hover .dash-feature-icon{border-color:var(--border-hover);}
+.dash-feature-icon svg{width:18px;height:18px;stroke:var(--text-main);fill:none;stroke-width:1.8;}
+.dash-feature-lbl{font-size:13px;font-weight:700;color:var(--text-main);line-height:1.3;}
+.dash-feature-sub{font-size:10px;color:var(--text-muted);font-weight:600;margin-top:-4px;}
+
+/* ===== METAS REDESIGN — Cards com anel de progresso ===== */
+.dash-goals-new{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.dash-goal-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 10px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.dash-goal-ring-wrap{position:relative;width:76px;height:76px;flex-shrink:0;}
+.dash-goal-ring-svg{width:76px;height:76px;overflow:visible;}
+.dash-goal-ring-track{fill:none;stroke:var(--bg-elevated);stroke-width:6;}
+.dash-goal-ring-fill{fill:none;stroke:var(--primary);stroke-width:6;stroke-linecap:round;stroke-dasharray:201.06;stroke-dashoffset:201.06;transform:rotate(-90deg);transform-origin:38px 38px;transition:stroke-dashoffset .8s ease;}
+.dash-goal-ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;}
+.dash-goal-ring-pct{font-size:16px;font-weight:900;color:var(--text-main);line-height:1;}
+.dash-goal-ring-unit{font-size:8px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px;}
+.dash-goal-card-title{font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.6px;text-align:center;}
+.dash-goal-card-sub{font-size:10px;color:var(--text-muted);font-weight:600;text-align:center;}
+.dash-goal-ctrls-new{display:flex;align-items:center;gap:6px;}
+.dash-goal-ctrls-new .btn-s{width:24px;height:24px;padding:0;font-size:14px;display:flex;align-items:center;justify-content:center;border-radius:6px;}
+.dash-goal-num-new{font-size:14px;font-weight:900;min-width:26px;text-align:center;color:var(--text-main);}
+
+/* Ocultar metas antigas, mostrar novas */
+.dash-goals-wrap{display:none;}
+
+/* Seção "Outros" estilo Skoob */
+.dash-section-label{font-size:12px;font-weight:900;color:var(--text-main);margin:16px 0 10px;letter-spacing:.2px;}
 </style>
 </head><body>
 <div id="toast-container"></div>
@@ -1022,7 +1671,7 @@ select option{background:var(--bg-elevated);}
   <div class="reader-topbar">
     <button class="btn-s" onclick="fecharLeitorInterno()" style="flex-shrink:0;">← Voltar</button>
     <div class="reader-title-bar" id="reader-title-bar">Nymos Reader</div>
-    <button class="btn-s btn-icon" onclick="window.open(activeFicLink,'_blank')" title="Abrir fora">↗</button>
+    <button class="btn-s btn-icon" onclick="abrirLinkExterno()" title="Abrir fora">↗</button>
     <button class="btn-s btn-icon" onclick="toggleReaderSettings()" title="Config"></button>
   </div>
   <div id="reader-settings-bar" style="display:none;background:var(--bg-surface);border-bottom:1px solid var(--border);padding:10px 14px;gap:10px;flex-wrap:wrap;align-items:center;">
@@ -1041,7 +1690,7 @@ select option{background:var(--bg-elevated);}
       <div class="blocked-icon"></div>
       <h3>Site bloqueou a leitura embutida</h3>
       <p>Este site usa X-Frame-Options e não permite carregamento interno.</p>
-      <button class="btn-primary" style="max-width:220px;" onclick="window.open(activeFicLink,'_blank')">Abrir no Navegador</button>
+      <button class="btn-primary" style="max-width:220px;" onclick="abrirLinkExterno()">Abrir no Navegador</button>
     </div>
   </div>
   <div class="reader-controls">
@@ -1053,11 +1702,11 @@ select option{background:var(--bg-elevated);}
 
 <div class="app-container">
   <nav class="bottom-nav">
-    <a class="tab active" id="tab-inicio" onclick="switchView('inicio')"><span class="tab-icon">⌂</span>Início</a>
-    <a class="tab" id="tab-biblioteca" onclick="switchView('biblioteca')"><span class="tab-icon">☰</span>Biblioteca</a>
-    <a class="tab tab-fab" id="tab-adicionar" onclick="switchView('adicionar')"><span style="font-size:20px;">✚</span></a>
-    <a class="tab" id="tab-pastas" onclick="switchView('pastas')"><span class="tab-icon">◫</span>Coleções</a>
-    <a class="tab" id="tab-perfil" onclick="switchView('perfil')"><span class="tab-icon">⊙</span>Painel</a>
+    <a class="tab active" id="tab-inicio" onclick="switchView('inicio')"><span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Início</a>
+    <a class="tab" id="tab-biblioteca" onclick="switchView('biblioteca')"><span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>Biblioteca</a>
+    <a class="tab tab-fab" id="tab-adicionar" onclick="switchView('adicionar')"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+    <a class="tab" id="tab-pastas" onclick="switchView('pastas')"><span class="tab-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span>Coleções</a>
+    <a class="tab" id="tab-perfil" onclick="switchView('perfil')"><span class="tab-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Painel</a>
   </nav>
   <main>
 
@@ -1291,37 +1940,203 @@ select option{background:var(--bg-elevated);}
 
     <!-- PAINEL -->
     <div id="view-perfil" class="view">
-      <div style="padding:20px 15px 0;">
-        <h2 style="font-weight:900;color:var(--primary);margin-bottom:14px;">Dashboard</h2>
-        <div class="profile-card">
-          <div><label for="inp-avatar" class="profile-avatar" id="prof-avatar-disp"><span id="prof-avatar-icon"></span></label><input type="file" id="inp-avatar" accept="image/*" style="display:none;" onchange="changeAvatar(event)"></div>
-          <div class="profile-info">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <div class="profile-name" id="prof-name-disp">@leitor</div>
-              <div class="profile-title-badge" id="prof-title" onclick="mudarTituloCustom()">Iniciante</div>
-            </div>
-            <div class="profile-meta">Nível <span id="user-level" style="color:var(--primary);font-weight:900;margin:0 2px;">1</span> • <span id="p-streak" style="color:var(--success);"> 0 dias</span></div>
-            <div class="xp-bar"><div class="xp-bar-fill" id="user-xp-bar"></div></div>
+
+      <!-- ══ HERO PROFILE ══ -->
+      <div class="dash-hero-sec">
+        <div id="dash-hero-bg-blur" style="position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(24px) brightness(.3) saturate(1.4);transform:scale(1.08);opacity:0;transition:opacity .5s;pointer-events:none;z-index:0;"></div>
+        <div class="dash-hero-inner">
+          <!-- Avatar com anel de XP -->
+          <div class="dash-avatar-ring-wrap">
+            <svg class="dash-xp-ring" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="48" cy="48" r="44" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/>
+              <circle id="dash-xp-ring-fill" cx="48" cy="48" r="44" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"
+                stroke-dasharray="276.46" stroke-dashoffset="276.46"
+                style="transform:rotate(-90deg);transform-origin:48px 48px;transition:stroke-dashoffset .8s ease;"/>
+            </svg>
+            <label for="inp-avatar" class="dash-avatar-inner" id="prof-avatar-disp"><span id="prof-avatar-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></label>
+            <input type="file" id="inp-avatar" accept="image/*" style="display:none;" onchange="changeAvatar(event)">
+          </div>
+          <!-- Nome e badge -->
+          <div class="dash-user-name" id="prof-name-disp">@leitor</div>
+          <div class="profile-title-badge" id="prof-title" onclick="mudarTituloCustom()">Iniciante</div>
+          <!-- Nível e streak -->
+          <div class="dash-level-meta">
+            <span>Nível <span id="user-level" style="color:var(--primary);font-weight:900;">1</span></span>
+            <span class="dash-level-sep">•</span>
+            <span id="p-streak" style="color:var(--text-muted);">0 dias</span>
+          </div>
+          <!-- Barra XP fina -->
+          <div class="dash-hero-xp-bar"><div class="dash-hero-xp-fill" id="user-xp-bar"></div></div>
+        </div>
+      </div>
+
+      <div style="padding:0 15px 0;">
+        <!-- ══ AÇÕES RÁPIDAS ══ -->
+        <div class="dash-qa-row">
+          <button class="dash-qa-btn" onclick="openProfileEdit()">
+            <span class="dash-qa-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span><span class="dash-qa-lbl">Nome</span>
+          </button>
+          <button class="dash-qa-btn" onclick="configurarPIN()">
+            <span class="dash-qa-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span class="dash-qa-lbl">PIN</span>
+          </button>
+          <button class="dash-qa-btn" onclick="openUserStats()">
+            <span class="dash-qa-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span class="dash-qa-lbl">Analytics</span>
+          </button>
+          <button class="dash-qa-btn" onclick="exportarRelatorioHTML()">
+            <span class="dash-qa-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span><span class="dash-qa-lbl">Exportar</span>
+          </button>
+          <button class="dash-qa-btn" onclick="abrirRoleta()">
+            <span class="dash-qa-icon"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></span><span class="dash-qa-lbl">Sortear</span>
+          </button>
+        </div>
+
+        <!-- ══ CARDS DE STATS (scroll horizontal) ══ -->
+        <div class="dash-stats-scroll">
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="dash-stat-val" id="p-total-obras">0</div>
+            <div class="dash-stat-lbl">Total</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="dash-stat-val" id="p-total-concl">0</div>
+            <div class="dash-stat-lbl">Concluídas</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="dash-stat-val" id="p-toread">0</div>
+            <div class="dash-stat-lbl">Para Ler</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="dash-stat-val" id="p-avg-rat-profile">0.0</div>
+            <div class="dash-stat-lbl">Nota Média</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="dash-stat-val" id="p-time">0h</div>
+            <div class="dash-stat-lbl">Horas Lidas</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="dash-stat-val" id="p-pages">0</div>
+            <div class="dash-stat-lbl">Páginas</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            <div class="dash-stat-val" id="p-dropped">0</div>
+            <div class="dash-stat-lbl">Abandonadas</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+            <div class="dash-stat-val sm" id="p-favgenre">—</div>
+            <div class="dash-stat-lbl">Gênero Fav.</div>
           </div>
         </div>
-        <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
-          <button class="btn-s" style="flex:1;" onclick="openProfileEdit()">Nome</button>
-          <button class="btn-s" style="flex:1;" onclick="configurarPIN()">PIN</button>
-          <button class="btn-s" style="flex:1;" onclick="openUserStats()">Stats</button>
-          <button class="btn-s" style="flex:1;" onclick="exportarRelatorioHTML()">HTML</button>
+
+        <!-- ══ GRADE DE FUNCIONALIDADES ESTILO SKOOB ══ -->
+        <div class="dash-feature-grid">
+          <div class="dash-feature-card" onclick="switchPanelTab('conquistas',document.querySelector('.panel-tab:nth-child(5)'));document.querySelector('.panel-tabs').scrollIntoView({behavior:'smooth'})">
+            <div class="dash-feature-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="dash-feature-lbl">Conquistas</div>
+            <div class="dash-feature-sub">Suas medalhas</div>
+          </div>
+          <div class="dash-feature-card" onclick="openUserStats()">
+            <div class="dash-feature-icon">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div class="dash-feature-lbl">Estatísticas</div>
+            <div class="dash-feature-sub">Análise completa</div>
+          </div>
+          <div class="dash-feature-card" onclick="switchView('biblioteca');setStatusTab('para ler',document.querySelector('.status-tab:nth-child(5)'))">
+            <div class="dash-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="dash-feature-lbl">TBR</div>
+            <div class="dash-feature-sub">Para ler</div>
+          </div>
+          <div class="dash-feature-card" onclick="switchPanelTab('descoberta',document.querySelector('.panel-tab:nth-child(4)'));document.querySelector('.panel-tabs').scrollIntoView({behavior:'smooth'})">
+            <div class="dash-feature-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="dash-feature-lbl">Descoberta</div>
+            <div class="dash-feature-sub">Sorteio e desafios</div>
+          </div>
         </div>
-        <div class="stats-grid">
-          <div class="stat-chip"><h4>Horas Lidas</h4><p id="p-time">0h</p></div>
-          <div class="stat-chip"><h4>Para Ler</h4><p id="p-toread">0</p></div>
-          <div class="stat-chip"><h4>Abandonadas</h4><p id="p-dropped">0</p></div>
-          <div class="stat-chip"><h4>Páginas Est.</h4><p id="p-pages">0</p></div>
-          <div class="stat-chip"><h4>Gênero Fav.</h4><p id="p-favgenre" class="small">—</p></div>
-          <div class="stat-chip"><h4>Nota Média</h4><p id="p-avg-rat-profile">0.0</p></div>
+
+        <!-- ══ METAS DE LEITURA REDESIGN ══ -->
+        <div class="dash-section-label">Metas de Leitura</div>
+        <div class="dash-goals-new">
+          <!-- Meta Diária -->
+          <div class="dash-goal-card">
+            <div class="dash-goal-ring-wrap">
+              <svg class="dash-goal-ring-svg" viewBox="0 0 76 76">
+                <circle class="dash-goal-ring-track" cx="38" cy="38" r="32"/>
+                <circle class="dash-goal-ring-fill" id="meta-ring-fill" cx="38" cy="38" r="32"/>
+              </svg>
+              <div class="dash-goal-ring-center">
+                <div class="dash-goal-ring-pct" id="meta-ring-pct">0%</div>
+                <div class="dash-goal-ring-unit">hoje</div>
+              </div>
+            </div>
+            <div class="dash-goal-card-title">Meta Diária</div>
+            <div class="dash-goal-card-sub" id="meta-text">0/5 caps</div>
+            <div class="dash-goal-ctrls-new">
+              <button class="btn-s" onclick="ajustarMetaDiaria(-1)">−</button>
+              <span class="dash-goal-num-new" id="meta-text-num">5</span>
+              <button class="btn-s" onclick="ajustarMetaDiaria(1)">+</button>
+            </div>
+          </div>
+          <!-- Meta Anual -->
+          <div class="dash-goal-card">
+            <div class="dash-goal-ring-wrap">
+              <svg class="dash-goal-ring-svg" viewBox="0 0 76 76">
+                <circle class="dash-goal-ring-track" cx="38" cy="38" r="32"/>
+                <circle class="dash-goal-ring-fill" id="meta-ano-ring-fill" cx="38" cy="38" r="32"/>
+              </svg>
+              <div class="dash-goal-ring-center">
+                <div class="dash-goal-ring-pct" id="meta-ano-ring-pct">0%</div>
+                <div class="dash-goal-ring-unit">anual</div>
+              </div>
+            </div>
+            <div class="dash-goal-card-title">Meta Anual</div>
+            <div class="dash-goal-card-sub" id="meta-ano-text">0/50 obras</div>
+            <div class="dash-goal-ctrls-new">
+              <button class="btn-s" onclick="ajustarMetaAnual(-5)">−</button>
+              <span class="dash-goal-num-new" id="meta-ano-text-num">50</span>
+              <button class="btn-s" onclick="ajustarMetaAnual(5)">+</button>
+            </div>
+          </div>
         </div>
+
+        <!-- Metas antigas (ocultas via CSS, mantidas para compatibilidade de IDs) -->
+        <div class="dash-goals-wrap" style="display:none;">
+          <div class="dash-goals-title">Metas de Leitura</div>
+          <div class="dash-goal-item">
+            <div class="dash-goal-hdr">
+              <span class="dash-goal-name">Meta Diária (Caps)</span>
+              <div class="dash-goal-ctrls"></div>
+            </div>
+            <div class="dash-goal-sub" id="meta-text-old"></div>
+            <div class="dash-goal-bar"><div class="dash-goal-fill" id="meta-fill" style="background:var(--primary);width:0%;"></div></div>
+          </div>
+          <div class="dash-goal-item">
+            <div class="dash-goal-hdr">
+              <span class="dash-goal-name">Meta Anual (Obras)</span>
+              <div class="dash-goal-ctrls"></div>
+            </div>
+            <div class="dash-goal-sub" id="meta-ano-text-old"></div>
+            <div class="dash-goal-bar"><div class="dash-goal-fill" id="meta-ano-fill" style="background:var(--primary);width:0%;"></div></div>
+          </div>
+        </div>
+
+        <div class="dash-section-label">Ferramentas</div>
+
         <div class="painel-content-wrap" id="painel-content-wrap">
         <div class="panel-tabs">
-          <div class="panel-tab active" onclick="switchPanelTab('metas',this)">Metas</div>
-          <div class="panel-tab" onclick="switchPanelTab('diario',this)">Diário</div>
+          <div class="panel-tab active" onclick="switchPanelTab('diario',this)">Diário</div>
           <div class="panel-tab" onclick="switchPanelTab('ferramentas',this)">Ferramentas</div>
           <div class="panel-tab" onclick="switchPanelTab('preferencias',this)">Sistema</div>
           <div class="panel-tab" onclick="switchPanelTab('descoberta',this)">Descoberta</div>
@@ -1334,37 +2149,7 @@ select option{background:var(--bg-elevated);}
           <div class="panel-tab" onclick="switchPanelTab('gdrive',this)">Conta</div>
         </div>
 
-        <div class="panel-section active config-grid" id="panel-metas">
-          <div class="config-panel">
-            <div class="config-panel-title">Metas de Leitura</div>
-            <div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
-                <span style="font-size:12px;font-weight:700;color:var(--warning);">Meta Diária (Caps)</span>
-                <div style="display:flex;gap:6px;align-items:center;">
-                  <button class="btn-s" style="width:28px;height:28px;padding:0;" onclick="ajustarMetaDiaria(-1)">−</button>
-                  <span id="meta-text-num" style="font-weight:900;font-size:15px;width:28px;text-align:center;">5</span>
-                  <button class="btn-s" style="width:28px;height:28px;padding:0;" onclick="ajustarMetaDiaria(1)">+</button>
-                </div>
-              </div>
-              <div style="font-size:11px;color:var(--text-muted);margin-bottom:5px;" id="meta-text">0/5 hoje</div>
-              <div class="xp-bar"><div class="xp-bar-fill" id="meta-fill" style="background:var(--warning);"></div></div>
-            </div>
-            <div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
-                <span style="font-size:12px;font-weight:700;color:var(--success);">Meta Anual (Obras)</span>
-                <div style="display:flex;gap:6px;align-items:center;">
-                  <button class="btn-s" style="width:28px;height:28px;padding:0;" onclick="ajustarMetaAnual(-5)">−</button>
-                  <span id="meta-ano-text-num" style="font-weight:900;font-size:15px;width:35px;text-align:center;">50</span>
-                  <button class="btn-s" style="width:28px;height:28px;padding:0;" onclick="ajustarMetaAnual(5)">+</button>
-                </div>
-              </div>
-              <div style="font-size:11px;color:var(--text-muted);margin-bottom:5px;" id="meta-ano-text">0/50 concluídas</div>
-              <div class="xp-bar"><div class="xp-bar-fill" id="meta-ano-fill" style="background:var(--success);"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel-section config-grid" id="panel-diario">
+        <div class="panel-section active config-grid" id="panel-diario">
           <div class="config-panel">
             <div class="config-panel-title">Diário Literário</div>
             <div class="input-group" style="margin:0;"><label>Estado de Espírito</label><select id="inp-p-mood" onchange="userGoals.mood=this.value;saveAllData();"><option>Focado na Leitura</option><option>Em Prantos</option><option>Revoltado com a História</option><option>Com Sono</option><option>Em Surto / Apaixonado</option></select></div>
@@ -1523,8 +2308,8 @@ select option{background:var(--bg-elevated);}
         </div>
         </div><!-- /painel-content-wrap -->
 
-      </div>
-    </div>
+      </div><!-- /padding wrapper -->
+    </div><!-- /view-perfil -->
   </main>
 
   <!-- MODAL: CONFIG -->
@@ -1543,9 +2328,17 @@ select option{background:var(--bg-elevated);}
         </div>
         <div class="config-panel">
           <div class="config-panel-title">Janelas & Painel</div>
-          <div class="input-group" style="margin:0;"><label>Layout da Janela de Obra</label><select id="inp-obra-layout-cfg" onchange="userGoals.obraLayout=this.value;saveAllData();"><option value="classic">Clássico (capa de fundo)</option><option value="compacto">Compacto (lista)</option><option value="editorial">Editorial (revista)</option><option value="lateral">Lateral (capa ao lado)</option><option value="poster">Pôster (cinematográfico)</option><option value="ficha">Ficha (minimalista)</option><option value="panorama">Panorama (banner)</option><option value="neon">Neon (cyberpunk)</option><option value="magazine">Magazine (horizontal)</option><option value="darkmin">Dark Minimal</option><option value="glass">Glass (glassmorphism)</option><option value="webtoon">Webtoon</option><option value="tapas">Tapas.io</option><option value="bilibili">Bilibili Comics</option><option value="lezhin">Lezhin Comics</option><option value="piccoma">Piccoma / Kakao</option><option value="mangaplus">MANGA Plus</option></select></div>
-          <div class="input-group" style="margin:0;"><label>Layout dos Botões da Janela de Obra</label><select id="inp-obra-btn-layout-cfg" onchange="userGoals.obraBtnLayout=this.value;saveAllData();aplicarLayoutBotoesObra();"><option value="">Padrão (ícone + texto)</option><option value="obra-btn-minimal">Minimalista (só texto)</option><option value="obra-btn-pill">Pílula (arredondado)</option><option value="obra-btn-solid">Sólido (fundo preenchido)</option><option value="obra-btn-large">Grande (ícone maior)</option><option value="obra-btn-compact">Compacto (linha horizontal)</option><option value="obra-btn-neon">Neon (bordas brilhantes)</option><option value="obra-btn-glass">Glass (transparência)</option></select></div>
-          <div class="input-group" style="margin:0;"><label>Layout do Painel</label><select id="inp-painel-layout-cfg" onchange="userGoals.painelLayout=this.value;saveAllData();aplicarLayoutPainel();"><option value="classic">Clássico (abas)</option><option value="sidebar">Lateral</option><option value="cards">Cartões Contínuos</option><option value="grid">Grade (blocos)</option><option value="accordion">Acordeão</option></select></div>
+          <div class="input-group" style="margin:0;"><label>Layout da Janela de Obra</label><select id="inp-obra-layout-cfg" onchange="userGoals.obraLayout=this.value;saveAllData();"><optgroup label="— Clássicos —"><option value="classic">Clássico (capa de fundo)</option><option value="compacto">Compacto (lista)</option><option value="lateral">Lateral (capa ao lado)</option><option value="magazine">Magazine (horizontal)</option></optgroup><optgroup label="— Cinematográfico —"><option value="poster">Pôster (cinematográfico)</option><option value="panorama">Panorama (banner)</option><option value="piccoma">Piccoma / Kakao</option><option value="arc">Arc (gradiente limpo)</option></optgroup><optgroup label="— Dark & Futurista —"><option value="neon">Neon (cyberpunk)</option><option value="darkmin">Dark Minimal</option><option value="glass">Glass (glassmorphism)</option><option value="spotify">Spotify</option></optgroup><optgroup label="— Editorial & Revista —"><option value="editorial">Editorial (revista)</option><option value="kodansha">Kodansha (mangá JP)</option><option value="mangaplus">MANGA Plus</option><option value="lezhin">Lezhin Comics</option><option value="bilibili">Bilibili Comics</option><option value="webtoon">Webtoon</option><option value="tapas">Tapas.io</option></optgroup><optgroup label="— Artístico & Especial —"><option value="ficha">Ficha (minimalista)</option><option value="vintage">Vintage (sépia)</option><option value="retro">Retro (8-bit)</option><option value="polaroid">Polaroid</option><option value="scrapbook">Scrapbook (colagem)</option></optgroup></select></div>
+          <div class="input-group" style="margin:0;"><label>Layout do Corpo da Janela (Info, Sinopse, Sugeridas)</label><select id="inp-obra-body-layout-cfg" onchange="userGoals.obraBodyLayout=this.value;saveAllData();"><option value="">Padrão (grade 2 colunas)</option><optgroup label="— Estrutura —"><option value="obra-body-lista">Lista (linhas horizontais)</option><option value="obra-body-feed">Feed (largura total)</option><option value="obra-body-ficha">Ficha técnica (tabela)</option><option value="obra-body-magazine">Magazine (destaque)</option><option value="obra-body-minimal">Minimalista (só texto)</option><option value="obra-body-dashboard">Dashboard (métricas)</option><option value="obra-body-bento">Bento (grade assimétrica)</option><option value="obra-body-webtoon">Webtoon (strip vertical)</option></optgroup><optgroup label="— Visual / Tema —"><option value="obra-body-neon">Neon (cyberpunk)</option><option value="obra-body-glass">Glass (translúcido)</option><option value="obra-body-spotify">Spotify (cards escuros)</option><option value="obra-body-metallic">Metálico (gradiente cinza)</option><option value="obra-body-aurora">Aurora (gradiente polar)</option><option value="obra-body-midnight">Midnight (terminal)</option><option value="obra-body-anilist">AniList (azul escuro)</option><option value="obra-body-kavita">Kavita (biblioteca)</option><option value="obra-body-arc">Arc (gradiente limpo)</option><option value="obra-body-lezhin">Lezhin (noir premium)</option><option value="obra-body-bilibili">Bilibili (azul manga)</option><option value="obra-body-tapas">Tapas (cartoon)</option><option value="obra-body-kodansha">Kodansha (mangá JP)</option><option value="obra-body-pastel">Pastel (cores suaves)</option></optgroup><optgroup label="— Artístico —"><option value="obra-body-editorial">Editorial (tipografia elegante)</option><option value="obra-body-vintage">Vintage (sépia)</option><option value="obra-body-retro">Retro (8-bit)</option><option value="obra-body-manga">Mangá (P&amp;B)</option><option value="obra-body-polaroid">Polaroid (fotos inclinadas)</option><option value="obra-body-scrapbook">Scrapbook (colagem)</option></optgroup></select></div>
+          <div class="input-group" style="margin:0;"><label>Layout dos Botões da Janela de Obra</label><select id="inp-obra-btn-layout-cfg" onchange="userGoals.obraBtnLayout=this.value;saveAllData();aplicarLayoutBotoesObra();"><option value="">Padrão (ícone + texto)</option><optgroup label="— Estilo —"><option value="obra-btn-minimal">Minimalista (só texto)</option><option value="obra-btn-flat">Flat (sem bordas)</option><option value="obra-btn-outline">Outline (só contorno)</option></optgroup><optgroup label="— Forma —"><option value="obra-btn-pill">Pílula (arredondado)</option><option value="obra-btn-compact">Compacto (linha horizontal)</option><option value="obra-btn-large">Grande (ícone maior)</option><option value="obra-btn-square">Quadrado (ícone)</option></optgroup><optgroup label="— Visual —"><option value="obra-btn-solid">Sólido (fundo preenchido)</option><option value="obra-btn-gradient">Gradiente</option><option value="obra-btn-neon">Neon (bordas brilhantes)</option><option value="obra-btn-glass">Glass (transparência)</option><option value="obra-btn-retro">Retro (8-bit)</option></optgroup></select></div>
+          <div class="input-group" style="margin:0;"><label>Layout do Painel</label><select id="inp-painel-layout-cfg" onchange="userGoals.painelLayout=this.value;saveAllData();aplicarLayoutPainel();"><optgroup label="— Navegação —"><option value="classic">Clássico (abas)</option><option value="float">Flutuante (abas arredondadas)</option><option value="compact">Compacto (abas finas)</option><option value="sidebar">Lateral</option><option value="grid">Grade (blocos)</option></optgroup><optgroup label="— Layout Único —"><option value="cards">Cartões Contínuos</option><option value="accordion">Acordeão</option><option value="timeline">Timeline (linha lateral)</option></optgroup><optgroup label="— Visual —"><option value="neon">Neon (abas brilhantes)</option></optgroup></select></div>
+        </div>
+        <div class="config-panel">
+          <div class="config-panel-title">Cards — Forma & Espaço</div>
+          <div class="input-group" style="margin:0;"><label>Espaçamento entre Cards</label><select id="inp-cfg-spacing" onchange="salvarOpcaoConfig()"><option value="spacing-sm">Compacto</option><option value="spacing-md">Normal</option><option value="spacing-lg">Espaçado</option><option value="spacing-xl">Extra Espaçado</option><option value="spacing-xs">Mínimo</option></select></div>
+          <div class="input-group" style="margin:0;"><label>Forma da Capa</label><select id="inp-cfg-cover-shape" onchange="salvarOpcaoConfig()"><option value="">Padrão</option><option value="cover-square">Quadrada (sem borda)</option><option value="cover-rounded">Arredondada</option><option value="cover-circle">Círculo</option><option value="cover-pill">Pílula</option></select></div>
+          <div class="input-group" style="margin:0;"><label>Raio das Bordas dos Cards</label><select id="inp-cfg-radius" onchange="salvarOpcaoConfig()"><option value="">Padrão do layout</option><option value="radius-none">Sem arredondamento</option><option value="radius-sm">Leve (6px)</option><option value="radius-md">Médio (12px)</option><option value="radius-lg">Grande (20px)</option><option value="radius-xl">Extra (32px)</option></select></div>
+          <div class="input-group" style="margin:0;"><label>Sombra dos Cards</label><select id="inp-cfg-shadow" onchange="salvarOpcaoConfig()"><option value="">Padrão</option><option value="shadow-none">Sem sombra</option><option value="shadow-soft">Suave</option><option value="shadow-float">Flutuante</option><option value="shadow-hard">Sólida (offset)</option><option value="shadow-colored">Colorida (tema)</option></select></div>
         </div>
         <div class="config-panel">
           <div class="config-panel-title">Tipografia</div>
@@ -1590,7 +2383,7 @@ select option{background:var(--bg-elevated);}
           <div class="mob-progress-caps"><span id="mob-progress-read">Cap. 0</span><span id="mob-progress-total">de ?</span></div>
         </div>
         <!-- CTA BRANCO -->
-        <button class="mob-cta" id="mob-cta-ler" onclick="abrirLinkDireto()"><span style="letter-spacing:.5px;">CONTINUAR LENDO</span></button>
+        <button class="mob-cta" onclick="abrirLinkExterno()"><span style="letter-spacing:.5px;">CONTINUAR LENDO</span></button>
         <!-- AÇÕES PRIMÁRIAS + MAIS OPÇÕES -->
         <div class="mob-actions-primary">
           <button class="mob-act-main" onclick="addChapter()"><span class="act-icon"></span>+1 Cap</button>
@@ -1603,8 +2396,21 @@ select option{background:var(--bg-elevated);}
           <div class="mob-more-item" onclick="syncChapters();toggleMaisOpcoes()"><span class="mob-more-item-icon"></span>Sincronizar Capítulos</div>
           <div class="mob-more-item" onclick="togglePinFic();toggleMaisOpcoes()"><span class="mob-more-item-icon"></span>Fixar / Desfixar</div>
           <div class="mob-more-item" onclick="toggleArchivedFic();toggleMaisOpcoes()"><span class="mob-more-item-icon"></span>Arquivar / Desarquivar</div>
-          <div class="mob-more-item" onclick="compartilharObra();toggleMaisOpcoes()"><span class="mob-more-item-icon">🔗</span>Copiar Link da Obra</div>
+          <div class="mob-more-item" onclick="abrirLinkExterno();toggleMaisOpcoes()"><span class="mob-more-item-icon"></span>Abrir Link Externo</div>
+          <div class="mob-more-item" onclick="toggleCustomPanel();toggleMaisOpcoes()"><span class="mob-more-item-icon">🎨</span>Personalizar Janela</div>
           <div class="mob-more-item del-item" onclick="deleteFic()"><span class="mob-more-item-icon"></span>Mover para Lixeira</div>
+        </div>
+        <!-- PAINEL DE PERSONALIZAÇÃO INLINE -->
+        <div class="mob-custom-panel" id="mob-custom-panel">
+          <div class="mob-custom-panel-title">Personalizar Janela de Obra</div>
+          <div class="mob-custom-row">
+            <div class="mob-custom-lbl">Layout da Janela</div>
+            <div class="mob-custom-chips" id="mob-skin-chips"></div>
+          </div>
+          <div class="mob-custom-row">
+            <div class="mob-custom-lbl">Estilo dos Botões</div>
+            <div class="mob-custom-chips" id="mob-btn-chips"></div>
+          </div>
         </div>
         <!-- INFO GRID COMPACTO -->
         <div class="mob-info-grid" id="mob-info-grid"></div>
@@ -1631,7 +2437,79 @@ select option{background:var(--bg-elevated);}
 
   <!-- MODAL: ESTATÍSTICAS -->
   <div class="modal" id="modal-estatisticas">
-    <div class="m-cont" style="height:85vh;"><button class="m-close-btn" onclick="fecharModal('modal-estatisticas')">×</button><div class="m-body"><h3 style="color:var(--primary);font-size:18px;font-weight:900;">Analytics</h3><div class="stats-grid"><div class="stat-chip"><h4>Total</h4><p id="s-tot">0</p></div><div class="stat-chip"><h4>Concluídas</h4><p id="s-con" style="color:var(--success);">0</p></div><div class="stat-chip"><h4>Nota Média</h4><p id="s-avg-rat" style="color:var(--warning);">0.0</p></div><div class="stat-chip"><h4>Taxa</h4><p id="s-taxa-con">0%</p></div></div><div class="m-info-panel"><div class="m-info-row"><span class="m-info-label">Maior obra</span><span class="m-info-value" id="s-max-cap" style="font-size:12px;">-</span></div><div class="m-info-row"><span class="m-info-label">Autor frequente</span><span class="m-info-value" id="s-fav-aut" style="font-size:12px;">-</span></div><div class="m-info-row"><span class="m-info-label">Fandom principal</span><span class="m-info-value" id="s-fav-fandom" style="font-size:12px;">-</span></div><div class="m-info-row"><span class="m-info-label">Palavras totais</span><span class="m-info-value" id="s-palavras">0</span></div></div><div class="m-section-title" style="margin-top:10px;margin-bottom:10px;">Distribuição de Gêneros</div><div id="s-g-list" style="max-height:200px;overflow-y:auto;background:var(--bg-elevated);padding:14px;border-radius:var(--radius-md);border:1px solid var(--border);"></div></div></div>
+    <div class="m-cont" style="height:88vh;">
+      <button class="m-close-btn" onclick="fecharModal('modal-estatisticas')">×</button>
+      <div class="m-body">
+        <h3 style="color:var(--primary);font-size:18px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:8px;">Analytics</h3>
+
+        <!-- Big 4 stats -->
+        <div class="anal-top-grid">
+          <div class="anal-big-chip" style="--ac:var(--primary)">
+            <div class="anal-chip-lbl">Total de Obras</div>
+            <div class="anal-chip-val" id="s-tot">0</div>
+          </div>
+          <div class="anal-big-chip" style="--ac:var(--success)">
+            <div class="anal-chip-lbl">Concluídas</div>
+            <div class="anal-chip-val" id="s-con">0</div>
+          </div>
+          <div class="anal-big-chip" style="--ac:var(--warning)">
+            <div class="anal-chip-lbl">Nota Média</div>
+            <div class="anal-chip-val" id="s-avg-rat">0.0</div>
+          </div>
+          <div class="anal-big-chip" style="--ac:#e040fb">
+            <div class="anal-chip-lbl">Taxa de Conclusão</div>
+            <div class="anal-chip-val" id="s-taxa-con">0%</div>
+          </div>
+        </div>
+
+        <!-- Progress rings -->
+        <div class="anal-rings-row">
+          <div class="anal-ring-card">
+            <svg class="anal-ring-svg" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+              <circle id="anal-ring-concl" cx="36" cy="36" r="30" fill="none" stroke="var(--success)" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                style="transform:rotate(-90deg);transform-origin:36px 36px;transition:stroke-dashoffset .8s .1s ease;"/>
+              <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="900" fill="var(--success)" id="anal-ring-concl-txt">0%</text>
+            </svg>
+            <div class="anal-ring-title">Taxa Concluídas</div>
+          </div>
+          <div class="anal-ring-card">
+            <svg class="anal-ring-svg" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+              <circle id="anal-ring-meta" cx="36" cy="36" r="30" fill="none" stroke="var(--warning)" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                style="transform:rotate(-90deg);transform-origin:36px 36px;transition:stroke-dashoffset .8s .2s ease;"/>
+              <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="900" fill="var(--warning)" id="anal-ring-meta-txt">0%</text>
+            </svg>
+            <div class="anal-ring-title">Meta Anual</div>
+          </div>
+          <div class="anal-ring-card">
+            <svg class="anal-ring-svg" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+              <circle id="anal-ring-dia" cx="36" cy="36" r="30" fill="none" stroke="#e040fb" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="188.5" stroke-dashoffset="188.5"
+                style="transform:rotate(-90deg);transform-origin:36px 36px;transition:stroke-dashoffset .8s .3s ease;"/>
+              <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="900" fill="#e040fb" id="anal-ring-dia-txt">0%</text>
+            </svg>
+            <div class="anal-ring-title">Meta Diária</div>
+          </div>
+        </div>
+
+        <!-- Insights -->
+        <div class="anal-section-title">Destaques</div>
+        <div class="anal-insights-grid">
+          <div class="anal-insight-row"><span class="anal-insight-lbl">Maior obra</span><span class="anal-insight-val anal-highlight" id="s-max-cap">-</span></div>
+          <div class="anal-insight-row"><span class="anal-insight-lbl">✍️ Autor frequente</span><span class="anal-insight-val" id="s-fav-aut">-</span></div>
+          <div class="anal-insight-row"><span class="anal-insight-lbl">🎭 Fandom principal</span><span class="anal-insight-val" id="s-fav-fandom">-</span></div>
+          <div class="anal-insight-row"><span class="anal-insight-lbl">🔤 Palavras totais</span><span class="anal-insight-val" id="s-palavras">0</span></div>
+        </div>
+
+        <!-- Genre distribution -->
+        <div class="anal-section-title">Distribuição de Gêneros</div>
+        <div id="s-g-list"></div>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL: EDITAR PERFIL -->
@@ -1858,7 +2736,7 @@ window.onload=async()=>{
   const savedLixeira=await idb.get('lixeira');if(savedLixeira)lixeira=savedLixeira;
   const savedWish=await idb.get('wishlist');if(savedWish)wishlist=savedWish;
   const agora=Date.now();lixeira=lixeira.filter(x=>agora-x.deletedAt<30*86400000);
-  const defaults={theme:'duskwood',cfgLayout:'lay-classic',cfgTexture:'tex-default',cfgAnim:'anim-hover',cfgHD:'off',cfgProgress:'on',metaTarget:5,metaAno:50,wpm:200,privacy:'off',nightMode:'off',sessionTotalMin:0,sessionTodayMin:0,sessionDate:'',pastasDesc:{},pastasExtras:[],painelLayout:'classic',obraLayout:'classic',obraBtnLayout:'',customThematicTags:[],hiddenThematicKeys:[]};
+  const defaults={theme:'duskwood',cfgLayout:'lay-classic',cfgTexture:'tex-default',cfgAnim:'anim-hover',cfgHD:'off',cfgProgress:'on',metaTarget:5,metaAno:50,wpm:200,privacy:'off',nightMode:'off',sessionTotalMin:0,sessionTodayMin:0,sessionDate:'',pastasDesc:{},pastasExtras:[],painelLayout:'classic',obraLayout:'classic',obraBtnLayout:'',obraBodyLayout:'',customThematicTags:[],hiddenThematicKeys:[]};
   for(const[k,v]of Object.entries(defaults)){if(userGoals[k]===undefined)userGoals[k]=v;}
   if(userGoals.appFont)document.documentElement.style.setProperty('--app-font',userGoals.appFont);
   if(userGoals.appFontSize)document.documentElement.style.setProperty('--app-font-size',userGoals.appFontSize);
@@ -1871,11 +2749,12 @@ window.onload=async()=>{
   if(userGoals.diarioSecreto)_('inp-p-diario').value=userGoals.diarioSecreto;
   if(userGoals.desafioDiaText)_('txt-desafio-dia').innerText=userGoals.desafioDiaText;
   const syncSel=(id,val)=>{if(_(id)&&val)_(id).value=val;};
-  syncSel('inp-cfg-layout',userGoals.cfgLayout);syncSel('inp-cfg-texture',userGoals.cfgTexture);
+  syncSel('inp-cfg-layout',userGoals.cfgLayout);syncSel('inp-cfg-texture',userGoals.cfgTexture);syncSel('inp-cfg-spacing',userGoals.cfgSpacing||'spacing-md');syncSel('inp-cfg-cover-shape',userGoals.cfgCoverShape||'');syncSel('inp-cfg-radius',userGoals.cfgRadius||'');syncSel('inp-cfg-shadow',userGoals.cfgShadow||'');
   syncSel('inp-cfg-anim',userGoals.cfgAnim);syncSel('inp-cfg-hd',userGoals.cfgHD);syncSel('inp-cfg-progress',userGoals.cfgProgress||'on');
   syncSel('inp-p-mood',userGoals.mood);syncSel('inp-p-eye',userGoals.nightMode);syncSel('inp-p-priv',userGoals.privacy);
   syncSel('inp-painel-layout-cfg',userGoals.painelLayout);aplicarLayoutPainel();
   syncSel('inp-obra-layout-cfg',userGoals.obraLayout);
+  syncSel('inp-obra-body-layout-cfg',userGoals.obraBodyLayout||'');
   syncSel('inp-obra-btn-layout-cfg',userGoals.obraBtnLayout||'');
   aplicarLayoutBotoesObra();
   syncSel('inp-font-cfg',userGoals.appFont||"'Nunito', sans-serif");
@@ -1910,6 +2789,59 @@ function showToast(msg,type=''){const t=document.createElement('div');t.classNam
 function toggleMaisOpcoes(){
   const dd=_('mob-more-dropdown');
   dd.classList.toggle('open');
+}
+
+// ======== PAINEL DE PERSONALIZAÇÃO INLINE DA OBRA ========
+const OBRA_SKINS=[
+  {v:'classic',l:'Clássico'},{v:'compacto',l:'Compacto'},{v:'lateral',l:'Lateral'},
+  {v:'magazine',l:'Magazine'},{v:'poster',l:'Pôster'},{v:'panorama',l:'Panorama'},
+  {v:'piccoma',l:'Piccoma'},{v:'arc',l:'Arc'},{v:'neon',l:'Neon'},
+  {v:'darkmin',l:'Dark Min'},{v:'glass',l:'Glass'},{v:'spotify',l:'Spotify'},
+  {v:'editorial',l:'Editorial'},{v:'kodansha',l:'Kodansha'},{v:'mangaplus',l:'Manga+'},
+  {v:'lezhin',l:'Lezhin'},{v:'bilibili',l:'Bilibili'},{v:'webtoon',l:'Webtoon'},
+  {v:'tapas',l:'Tapas'},{v:'ficha',l:'Ficha'},{v:'vintage',l:'Vintage'},
+  {v:'retro',l:'Retro'},{v:'polaroid',l:'Polaroid'},{v:'scrapbook',l:'Scrapbook'}
+];
+const OBRA_BTN_STYLES=[
+  {v:'',l:'Padrão'},{v:'obra-btn-minimal',l:'Minimal'},{v:'obra-btn-pill',l:'Pílula'},
+  {v:'obra-btn-solid',l:'Sólido'},{v:'obra-btn-large',l:'Grande'},
+  {v:'obra-btn-compact',l:'Compact'},{v:'obra-btn-neon',l:'Neon'},{v:'obra-btn-glass',l:'Glass'},
+  {v:'obra-btn-retro',l:'Retro'},{v:'obra-btn-flat',l:'Flat'},{v:'obra-btn-outline',l:'Outline'},
+  {v:'obra-btn-gradient',l:'Gradiente'},{v:'obra-btn-square',l:'Quadrado'}
+];
+function toggleCustomPanel(){
+  const p=_('mob-custom-panel');
+  if(!p)return;
+  const isOpen=p.classList.contains('open');
+  p.classList.toggle('open');
+  if(!isOpen)renderCustomPanelChips();
+}
+function renderCustomPanelChips(){
+  const skinCont=_('mob-skin-chips');
+  const btnCont=_('mob-btn-chips');
+  if(!skinCont||!btnCont)return;
+  const curSkin=userGoals.obraLayout||'classic';
+  const curBtn=userGoals.obraBtnLayout||'';
+  skinCont.innerHTML=OBRA_SKINS.map(s=>`<div class="mob-custom-chip${s.v===curSkin?' active':''}" onclick="setObraSkinInline('${s.v}')">${s.l}</div>`).join('');
+  btnCont.innerHTML=OBRA_BTN_STYLES.map(s=>`<div class="mob-custom-chip${s.v===curBtn?' active':''}" onclick="setObraBtnInline('${s.v}')">${s.l}</div>`).join('');
+}
+function setObraSkinInline(val){
+  userGoals.obraLayout=val;
+  saveAllData();
+  // Aplica skin no modal aberto
+  const moc=_('m-cont-scroll');
+  if(moc){const skinMap={compacto:'obra-skin-compacto',editorial:'obra-skin-editorial',lateral:'obra-skin-lateral',poster:'obra-skin-poster',ficha:'obra-skin-ficha',panorama:'obra-skin-panorama',neon:'obra-skin-neon',magazine:'obra-skin-magazine',darkmin:'obra-skin-darkmin',glass:'obra-skin-glass',webtoon:'obra-skin-webtoon',tapas:'obra-skin-tapas',bilibili:'obra-skin-bilibili',lezhin:'obra-skin-lezhin',piccoma:'obra-skin-piccoma',mangaplus:'obra-skin-mangaplus',spotify:'obra-skin-spotify',retro:'obra-skin-retro',vintage:'obra-skin-vintage',polaroid:'obra-skin-polaroid',arc:'obra-skin-arc',kodansha:'obra-skin-kodansha',scrapbook:'obra-skin-scrapbook'};const skin=skinMap[val]||'';const bodyLay=userGoals.obraBodyLayout||'';moc.className='m-obra-cont'+(skin?' '+skin:'')+(bodyLay?' '+bodyLay:'');}
+  // Atualiza o select nas configs se estiver visível
+  const sel=_('inp-obra-layout-cfg');if(sel)sel.value=val;
+  renderCustomPanelChips();
+}
+function setObraBtnInline(val){
+  userGoals.obraBtnLayout=val;
+  saveAllData();
+  aplicarLayoutBotoesObra();
+  // Atualiza o select nas configs se estiver visível
+  const sel=_('inp-obra-btn-layout-cfg');if(sel)sel.value=val;
+  renderCustomPanelChips();
 }
 
 // ======== HERO ========
@@ -2138,7 +3070,7 @@ function renderGrids(){
   _('color-sort-bar').classList.toggle('visible',isColorSort);
   if(isColorSort)_('color-sort-stats').innerText=`${arr.length} obra(s)`;
   const grid=_('grid-all');
-  grid.className=`grid ${userGoals.cfgLayout} ${userGoals.cfgTexture} ${userGoals.cfgAnim}${userGoals.cfgHD==='on'?' ia-hd':''}${isColorSort?' color-sort-active':''}`;
+  grid.className=`grid ${userGoals.cfgLayout} ${userGoals.cfgTexture} ${userGoals.cfgAnim}${userGoals.cfgHD==='on'?' ia-hd':''}${isColorSort?' color-sort-active':''}${userGoals.cfgSpacing?' '+userGoals.cfgSpacing:''}${userGoals.cfgCoverShape?' '+userGoals.cfgCoverShape:''}${userGoals.cfgRadius?' '+userGoals.cfgRadius:''}${userGoals.cfgShadow?' '+userGoals.cfgShadow:''}`;
   if(!arr.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon"></div><p>Nenhuma obra encontrada</p></div>`;renderReadingCarousel();renderRecoSection();return;}
   grid.innerHTML=arr.map(x=>{
     const grad=coverGradient(x);
@@ -2206,9 +3138,10 @@ function openModal(id){
   activeFicId=id;const f=db.find(x=>x.id==id);if(!f)return;activeFicLink=f.lnk||'';
   sinopseExpandida=false;
   const moc=_('m-cont-scroll');
-  if(moc){const skinMap={compacto:'obra-skin-compacto',editorial:'obra-skin-editorial',lateral:'obra-skin-lateral',poster:'obra-skin-poster',ficha:'obra-skin-ficha',panorama:'obra-skin-panorama',neon:'obra-skin-neon',magazine:'obra-skin-magazine',darkmin:'obra-skin-darkmin',glass:'obra-skin-glass',webtoon:'obra-skin-webtoon',tapas:'obra-skin-tapas',bilibili:'obra-skin-bilibili',lezhin:'obra-skin-lezhin',piccoma:'obra-skin-piccoma',mangaplus:'obra-skin-mangaplus'};const skin=skinMap[userGoals.obraLayout]||'';moc.className='m-obra-cont'+(skin?' '+skin:'');}
+  if(moc){const skinMap={compacto:'obra-skin-compacto',editorial:'obra-skin-editorial',lateral:'obra-skin-lateral',poster:'obra-skin-poster',ficha:'obra-skin-ficha',panorama:'obra-skin-panorama',neon:'obra-skin-neon',magazine:'obra-skin-magazine',darkmin:'obra-skin-darkmin',glass:'obra-skin-glass',webtoon:'obra-skin-webtoon',tapas:'obra-skin-tapas',bilibili:'obra-skin-bilibili',lezhin:'obra-skin-lezhin',piccoma:'obra-skin-piccoma',mangaplus:'obra-skin-mangaplus',spotify:'obra-skin-spotify',retro:'obra-skin-retro',vintage:'obra-skin-vintage',polaroid:'obra-skin-polaroid',arc:'obra-skin-arc',kodansha:'obra-skin-kodansha',scrapbook:'obra-skin-scrapbook'};const skin=skinMap[userGoals.obraLayout]||'';const bodyLay=userGoals.obraBodyLayout||'';moc.className='m-obra-cont'+(skin?' '+skin:'')+(bodyLay?' '+bodyLay:'');}
   aplicarLayoutBotoesObra();
   const dd=_('mob-more-dropdown');if(dd)dd.classList.remove('open');
+  const cp=_('mob-custom-panel');if(cp)cp.classList.remove('open');
 
   const hero=_('mob-hero-bg');
   if(f.cov){hero.style.backgroundImage=`url(${f.cov})`;}else{const grad=coverGradient(f);hero.style.backgroundImage='none';hero.style.background=grad;}
@@ -2281,21 +3214,67 @@ function togglePinFic(){const f=db.find(x=>x.id==activeFicId);if(!f)return;f.pin
 function toggleArchivedFic(){const f=db.find(x=>x.id==activeFicId);if(!f)return;f.archived=f.archived==='1'?'0':'1';f.logs=f.logs||[];f.logs.push({ts:Date.now(),txt:f.archived==='1'?'Arquivada':'Desarquivada'});saveAllData();openModal(activeFicId);renderGrids();showToast(f.archived==='1'?' Arquivada!':'Desarquivada.','success');}
 
 // ======== LEITOR ========
-function abrirLinkDireto(){
-  const f=db.find(x=>x.id==activeFicId);
-  if(!f||!f.lnk){showToast('Nenhum link cadastrado para esta obra.','error');return;}
-  window.open(f.lnk,'_blank');
-}
-// mantido por compatibilidade com leitor interno ainda referenciado em outros lugares
-function abrirLeitorInterno(){abrirLinkDireto();}
+function abrirLeitorInterno(){const f=db.find(x=>x.id==activeFicId);if(!f||!f.lnk){showToast('URL não cadastrada.','error');return;}activeFicLink=f.lnk;const linkComCap=buildLinkComCapitulo(f.lnk,f.cap);_('reader-title-bar').innerText=f.tit;_('reader-cap-display').innerText=`Cap. ${f.cap||0}${f.capTotal?'/'+f.capTotal:''}`;fecharModal('modal-obra');_('reader-container').classList.add('open');const iframe=_('reader-iframe'),blocked=_('reader-blocked');iframe.style.display='block';blocked.style.display='none';iframe.src='';setTimeout(()=>{iframe.src=linkComCap;const ck=setTimeout(()=>{try{if(iframe.contentDocument===null){iframe.style.display='none';blocked.style.display='flex';}}catch{}},3000);iframe.onload=()=>clearTimeout(ck);},50);applyReaderTheme(userGoals.readerTheme||'dark');readerZoom=100;_('reader-zoom-val').innerText='100%';iframe.style.transform='scale(1)';}
 function fecharLeitorInterno(){_('reader-container').classList.remove('open');_('reader-iframe').src='';if(activeFicId)_('modal-obra').style.display='flex';}
 function toggleReaderSettings(){const b=_('reader-settings-bar');b.style.display=b.style.display==='flex'?'none':'flex';}
 function setReaderTheme(t){userGoals.readerTheme=t;saveAllData();applyReaderTheme(t);}
 function applyReaderTheme(t){const iframe=_('reader-iframe');try{const d=iframe.contentDocument||iframe.contentWindow?.document;if(d){let e=d.getElementById('nymos-reader-style');if(!e){e=d.createElement('style');e.id='nymos-reader-style';d.head.appendChild(e);}const themes={light:'body{background:#fff!important;color:#111!important;}',sepia:'body{background:#fdf6e3!important;color:#3e3222!important;}',dark:'body{background:#0a0a0a!important;color:#e0e0e0!important;}'};e.textContent=themes[t]||themes.dark;}}catch{}}
 function changeReaderZoom(delta){readerZoom=Math.max(50,Math.min(200,readerZoom+delta));_('reader-zoom-val').innerText=readerZoom+'%';const iframe=_('reader-iframe');iframe.style.transformOrigin='top left';iframe.style.transform=`scale(${readerZoom/100})`;iframe.style.width=`${10000/readerZoom}%`;iframe.style.height=`${10000/readerZoom}%`;}
 function addChapterFromReader(){const f=db.find(x=>x.id==activeFicId);if(!f)return;f.cap=(parseInt(f.cap)||0)+1;f.lastRead=Date.now();f.hasNewChapter=false;f.logs=f.logs||[];f.logs.push({ts:Date.now(),txt:`Cap. ${f.cap} (leitor)`});atualizarOfensiva();checkMetaDiaria();saveAllData();renderGrids();renderProfileStats();renderContinueReadingBtn();_('reader-cap-display').innerText=`Cap. ${f.cap}${f.capTotal?'/'+f.capTotal:''}`;showToast(` Cap. ${f.cap}!`,'success');}
-function abrirLinkExterno(){if(activeFicLink)window.open(activeFicLink,'_blank');else showToast('URL não cadastrada.','error');}
-function compartilharObra(){const f=db.find(x=>x.id==activeFicId);if(!f||!f.lnk){showToast('Nenhum link cadastrado.','error');return;}navigator.clipboard.writeText(f.lnk).then(()=>showToast('🔗 Link copiado!','success')).catch(()=>showToast('Falha ao copiar.','error'));}
+function buildLinkComCapitulo(lnk,cap){
+  if(!lnk||!cap||parseInt(cap)<=0)return lnk;
+  const n=parseInt(cap);
+  const pad=n<10?'0'+n:''+n;
+  const url=lnk.replace(/\/+$/,'');
+  // AO3 — usa /navigate pois o ID do cap nao eh o numero
+  if(url.includes('archiveofourown.org')){
+    return url.replace(/\/chapters\/\d+.*/,'')+'/navigate';
+  }
+  // Wattpad — usa table-of-contents pois o ID do cap nao eh o numero
+  if(url.includes('wattpad.com')){
+    return url+'/table-of-contents';
+  }
+  // Royal Road — usa /chapters pois o ID do cap nao eh o numero
+  if(url.includes('royalroad.com')){
+    return url.replace(/\/chapter\/.*/,'')+'/chapters';
+  }
+  // comix.to — ID interno no capitulo, abre pagina da obra
+  if(url.includes('comix.to')){
+    return url.replace(/\/[^/]+-chapter-\d+.*/,'');
+  }
+  // Spirit Fanfics: /obra/XXXXX/capitulo/N
+  if(url.includes('spiritfanfics.com')){
+    return url.replace(/\/capitulo\/\d+.*/,'')+'/capitulo/'+n;
+  }
+  // Nyah!: /historia/XXXXX/capitulo/N
+  if(url.includes('nyah.me')){
+    return url.replace(/\/capitulo\/\d+.*/,'')+'/capitulo/'+n;
+  }
+  // FanFiction.net: /s/XXXXX/N/
+  if(url.includes('fanfiction.net')){
+    return url.replace(/\/\d+\/?$/,'').replace(/\/s\/(\d+).*/,'/s/$1')+'/'+n+'/';
+  }
+  // Sites Madara (WordPress) — padrao /capitulo-NN/ ja presente no link salvo
+  if(/\/capitulo-\d+\/?$/.test(url)){
+    return url.replace(/\/capitulo-\d+\/?$/,'')+'/capitulo-'+pad+'/';
+  }
+  if(/\/chapter-\d+\/?$/.test(url)){
+    return url.replace(/\/chapter-\d+\/?$/,'')+'/chapter-'+pad+'/';
+  }
+  // Sites Madara — link eh a pagina da obra (sem /capitulo- no final)
+  // Cobre: covendasbruxonas.com, fbsquadx.com, 3xyaoi.net e qualquer outro Madara
+  if(/\/(manga|manhua|manhwa|obra|novel|series)\/[^/]+\/?$/.test(url)){
+    return url+'/capitulo-'+pad+'/';
+  }
+  // Fallback generico
+  return url+'/capitulo-'+pad+'/';
+}
+function abrirLinkExterno(){
+  const f=db.find(x=>x.id==activeFicId);
+  if(!activeFicLink){showToast('URL não cadastrada.','error');return;}
+  const destino=buildLinkComCapitulo(activeFicLink,f?.cap);
+  window.open(destino,'_blank');
+}
 function abrirTrilha(){const f=db.find(x=>x.id==activeFicId);if(f?.music)window.open(f.music,'_blank');}
 function renderContinueReadingBtn(){}
 
@@ -2525,7 +3504,7 @@ function alterarLayoutObra(){
 
 function aplicarLayoutBotoesObra(){
   const mob=_('mob-body');if(!mob)return;
-  const allBtnLayouts=['obra-btn-minimal','obra-btn-pill','obra-btn-solid','obra-btn-large','obra-btn-compact','obra-btn-neon','obra-btn-glass'];
+  const allBtnLayouts=['obra-btn-minimal','obra-btn-pill','obra-btn-solid','obra-btn-large','obra-btn-compact','obra-btn-neon','obra-btn-glass','obra-btn-retro','obra-btn-flat','obra-btn-outline','obra-btn-gradient','obra-btn-square'];
   mob.classList.remove(...allBtnLayouts);
   if(userGoals.obraBtnLayout)mob.classList.add(userGoals.obraBtnLayout);
 }
@@ -2539,13 +3518,17 @@ function alterarLayoutPainel(){
 }
 function aplicarLayoutPainel(){
   const v=_('view-perfil');if(!v)return;
-  v.classList.remove('painel-sidebar','painel-cards','painel-grid','painel-accordion');
+  v.classList.remove('painel-sidebar','painel-cards','painel-grid','painel-accordion','painel-float','painel-compact','painel-neon','painel-timeline');
   if(userGoals.painelLayout==='sidebar')v.classList.add('painel-sidebar');
   else if(userGoals.painelLayout==='cards')v.classList.add('painel-cards');
   else if(userGoals.painelLayout==='grid')v.classList.add('painel-grid');
   else if(userGoals.painelLayout==='accordion'){v.classList.add('painel-accordion');montarAccordionPainel();}
+  else if(userGoals.painelLayout==='float')v.classList.add('painel-float');
+  else if(userGoals.painelLayout==='compact')v.classList.add('painel-compact');
+  else if(userGoals.painelLayout==='neon')v.classList.add('painel-neon');
+  else if(userGoals.painelLayout==='timeline')v.classList.add('painel-timeline');
 }
-const PANEL_LABELS={metas:' Metas',diario:' Diário',ferramentas:' Ferramentas',preferencias:' Sistema',descoberta:' Descoberta',conquistas:' Conquistas',atividade:' Atividade',temas:' Temas',dados:' Dados',lixeira:' Lixeira',desejos:' Desejos',gdrive:' Conta'};
+const PANEL_LABELS={diario:' Diário',ferramentas:' Ferramentas',preferencias:' Sistema',descoberta:' Descoberta',conquistas:' Conquistas',atividade:' Atividade',temas:' Temas',dados:' Dados',lixeira:' Lixeira',desejos:' Desejos',gdrive:' Conta'};
 function montarAccordionPainel(){
   document.querySelectorAll('#view-perfil .panel-section').forEach(sec=>{
     if(sec.dataset.accBuilt)return;
@@ -2556,7 +3539,7 @@ function montarAccordionPainel(){
     sec.dataset.accBuilt='1';
   });
   if(!document.querySelector('#view-perfil .panel-section.acc-open')){
-    const first=_('panel-metas');if(first)first.classList.add('acc-open');
+    const first=_('panel-diario');if(first)first.classList.add('acc-open');
   }
 }
 function toggleAccordionSection(headerEl){
@@ -3083,7 +4066,7 @@ function addTagChip(inputId,val){
 function populateSecurityFilters(){const allW=new Set(['Violência','Sangue','Morte','Abuso','Tortura','Gore','Drogas']);db.forEach(x=>{if(x.war)x.war.split(',').forEach(w=>{const wt=w.trim();if(wt)allW.add(wt);});});const cont=_('f-block-war-container');if(cont)cont.innerHTML=Array.from(allW).sort().map(w=>`<span class="filter-chip" onclick="this.classList.toggle('active');renderGrids();">${w}</span>`).join('');}
 
 // ======== PERFIL ========
-function changeAvatar(e){const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>{userGoals.avatar=ev.target.result;_('prof-avatar-disp').style.backgroundImage=`url(${ev.target.result})`;_('prof-avatar-icon').style.display='none';saveAllData();};r.readAsDataURL(f);}}
+function changeAvatar(e){const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>{userGoals.avatar=ev.target.result;const av=_('prof-avatar-disp');if(av){av.style.backgroundImage=`url(${ev.target.result})`;const ic=_('prof-avatar-icon');if(ic)ic.style.display='none';}saveAllData();};r.readAsDataURL(f);}}
 function openProfileEdit(){_('inp-prof-name').value=_('prof-name-disp').innerText;_('modal-perfil').style.display='flex';}
 function saveProfile(){const n=_('inp-prof-name').value.trim();if(n){_('prof-name-disp').innerText=n;userGoals.name=n;saveAllData();showToast('Perfil salvo!','success');}fecharModal('modal-perfil');}
 function mudarTituloCustom(){const t=prompt("Título:",userGoals.tituloCustom||_('prof-title').innerText);if(t){userGoals.tituloCustom=t;_('prof-title').innerText=t;saveAllData();}}
@@ -3096,29 +4079,88 @@ function atualizarOfensiva(){const h=new Date().toISOString().split('T')[0];if(u
 function ajustarMetaDiaria(v){userGoals.metaTarget=Math.max(1,(parseInt(userGoals.metaTarget)||5)+v);saveAllData();checkDailyGoalUI();}
 function ajustarMetaAnual(v){userGoals.metaAno=Math.max(1,(parseInt(userGoals.metaAno)||50)+v);saveAllData();renderProfileStats();}
 function checkMetaDiaria(){const h=new Date().toISOString().split('T')[0];if(userGoals.metaData!==h){userGoals.metaData=h;userGoals.metaProg=0;}userGoals.metaProg=(userGoals.metaProg||0)+1;const target=userGoals.metaTarget||5;if(userGoals.metaProg===target)showToast(` Meta: ${target} caps!`,'success');checkDailyGoalUI();saveAllData();}
-function checkDailyGoalUI(){const h=new Date().toISOString().split('T')[0];if(userGoals.metaData!==h)userGoals.metaProg=0;const target=userGoals.metaTarget||5,p=Math.min(userGoals.metaProg||0,target);if(_('meta-text'))_('meta-text').innerText=`${p}/${target} hoje`;if(_('meta-fill'))_('meta-fill').style.width=`${(p/target)*100}%`;if(_('meta-text-num'))_('meta-text-num').innerText=target;if(_('meta-ano-text-num'))_('meta-ano-text-num').innerText=userGoals.metaAno||50;}
+function checkDailyGoalUI(){const h=new Date().toISOString().split('T')[0];if(userGoals.metaData!==h)userGoals.metaProg=0;const target=userGoals.metaTarget||5,p=Math.min(userGoals.metaProg||0,target);if(_('meta-text'))_('meta-text').innerText=`${p}/${target} caps`;if(_('meta-fill'))_('meta-fill').style.width=`${(p/target)*100}%`;if(_('meta-text-num'))_('meta-text-num').innerText=target;if(_('meta-ano-text-num'))_('meta-ano-text-num').innerText=userGoals.metaAno||50;
+  // Anel diário
+  const diaPct=Math.min(Math.round(p/target*100),100);
+  const diaRing=_('meta-ring-fill');if(diaRing){const c=201.06;diaRing.style.strokeDashoffset=c*(1-diaPct/100);}
+  if(_('meta-ring-pct'))_('meta-ring-pct').innerText=diaPct+'%';}
 function renderProfileStats(){
   const concluidas=db.filter(x=>padText(x.sta)==='concluido').length;
   let palavras=0,caps=0,sumRat=0,ratCt=0,autMap={},genMap={},fandomMap={},toRead=0,dropped=0;
   db.forEach(x=>{palavras+=parseInt(x.wds)||0;caps+=parseInt(x.cap)||0;if(parseFloat(x.rat)){sumRat+=parseFloat(x.rat);ratCt++;}if(x.aut)autMap[x.aut.trim()]=(autMap[x.aut.trim()]||0)+1;if(x.fandom)fandomMap[x.fandom.trim()]=(fandomMap[x.fandom.trim()]||0)+1;if(x.tag)x.tag.split(',').forEach(t=>{const g=t.trim();if(g)genMap[g]=(genMap[g]||0)+1;});if(padText(x.sta)==='para ler')toRead++;if(padText(x.sta)==='dropado')dropped++;});
-  const wpm=parseInt(userGoals.wpm)||200,horas=Math.floor(palavras/wpm/60),pags=Math.floor(palavras/250),media=ratCt>0?(sumRat/ratCt).toFixed(1):'0.0',favG=Object.entries(genMap).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—',level=1+Math.floor(db.length/5)+Math.floor(concluidas/2),xp=(db.length*10)+(concluidas*25)+caps;
-  if(_('p-time'))_('p-time').innerText=`${horas}h`;if(_('p-toread'))_('p-toread').innerText=toRead;if(_('p-dropped'))_('p-dropped').innerText=dropped;if(_('p-pages'))_('p-pages').innerText=pags.toLocaleString();if(_('p-favgenre'))_('p-favgenre').innerText=favG;if(_('p-avg-rat-profile'))_('p-avg-rat-profile').innerText=media;
-  if(_('user-level'))_('user-level').innerText=level;if(_('user-xp-bar'))_('user-xp-bar').style.width=Math.min((xp/(level*50))*100,100)+'%';if(_('p-streak'))_('p-streak').innerText=` ${userGoals.streak||0} dias`;
+  const wpm=parseInt(userGoals.wpm)||200,horas=Math.floor(palavras/wpm/60),pags=Math.floor(palavras/250),media=ratCt>0?(sumRat/ratCt).toFixed(1):'0.0',favG=Object.entries(genMap).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—',level=1+Math.floor(db.length/5)+Math.floor(concluidas/2),xp=(db.length*10)+(concluidas*25)+caps,xpPct=Math.min((xp/(level*50))*100,100);
+  // Dashboard profile
+  if(_('p-time'))_('p-time').innerText=`${horas}h`;
+  if(_('p-toread'))_('p-toread').innerText=toRead;
+  if(_('p-dropped'))_('p-dropped').innerText=dropped;
+  if(_('p-pages'))_('p-pages').innerText=pags.toLocaleString();
+  if(_('p-favgenre'))_('p-favgenre').innerText=favG;
+  if(_('p-avg-rat-profile'))_('p-avg-rat-profile').innerText=media;
+  if(_('p-total-obras'))_('p-total-obras').innerText=db.length;
+  if(_('p-total-concl'))_('p-total-concl').innerText=concluidas;
+  // Level + XP ring
+  if(_('user-level'))_('user-level').innerText=level;
+  if(_('p-streak'))_('p-streak').innerText=`${userGoals.streak||0} dias`;
+  if(_('user-xp-bar'))_('user-xp-bar').style.width=xpPct+'%';
+  // Animate SVG XP ring (circumference = 2π*44 ≈ 276.46)
+  const ring=_('dash-xp-ring-fill');if(ring){const circ=276.46;ring.style.strokeDashoffset=circ*(1-xpPct/100);}
+  // Hero background blur from avatar
+  const heroBg=_('dash-hero-bg-blur');
+  if(heroBg&&userGoals.avatar){heroBg.style.backgroundImage=`url(${userGoals.avatar})`;heroBg.style.opacity='1';}
+  else if(heroBg){heroBg.style.opacity='0';}
   if(!userGoals.tituloCustom){const titles=[[1,'Iniciante'],[5,'Leitor Casual'],[10,'Leitor Constante'],[20,'Curador'],[35,'Especialista'],[50,'Mestre das Letras']];const t=[...titles].reverse().find(([n])=>level>=n)?.[1]||'Iniciante';if(_('prof-title'))_('prof-title').innerText=t;}
-  if(_('s-tot'))_('s-tot').innerText=db.length;if(_('s-con'))_('s-con').innerText=concluidas;if(_('s-avg-rat'))_('s-avg-rat').innerText=media;if(_('s-taxa-con'))_('s-taxa-con').innerText=db.length>0?Math.round(concluidas/db.length*100)+'%':'0%';
+  // Analytics modal stats
+  if(_('s-tot'))_('s-tot').innerText=db.length;
+  if(_('s-con'))_('s-con').innerText=concluidas;
+  if(_('s-avg-rat'))_('s-avg-rat').innerText=media;
+  const taxa=db.length>0?Math.round(concluidas/db.length*100):0;
+  if(_('s-taxa-con'))_('s-taxa-con').innerText=taxa+'%';
+  // Analytics rings
+  const circ=188.5;
+  if(_('anal-ring-concl')){_('anal-ring-concl').style.strokeDashoffset=circ*(1-taxa/100);if(_('anal-ring-concl-txt'))_('anal-ring-concl-txt').textContent=taxa+'%';}
+  const mAno=parseInt(userGoals.metaAno)||50,metaPct=Math.min(Math.round(concluidas/mAno*100),100);
+  if(_('anal-ring-meta')){_('anal-ring-meta').style.strokeDashoffset=circ*(1-metaPct/100);if(_('anal-ring-meta-txt'))_('anal-ring-meta-txt').textContent=metaPct+'%';}
+  const hoje2=new Date().toISOString().split('T')[0];if(userGoals.metaData!==hoje2)userGoals.metaProg=0;
+  const diaPct=Math.min(Math.round((userGoals.metaProg||0)/(userGoals.metaTarget||5)*100),100);
+  if(_('anal-ring-dia')){_('anal-ring-dia').style.strokeDashoffset=circ*(1-diaPct/100);if(_('anal-ring-dia-txt'))_('anal-ring-dia-txt').textContent=diaPct+'%';}
+  // Insights
   const maxCap=db.reduce((acc,x)=>parseInt(x.cap)>acc.n?{n:parseInt(x.cap),t:x.tit}:acc,{n:0,t:'-'});
   if(_('s-max-cap'))_('s-max-cap').innerText=maxCap.t!=='-'?`${maxCap.t} (${maxCap.n} caps)`:'-';
   const favAut=Object.entries(autMap).sort((a,b)=>b[1]-a[1])[0];if(_('s-fav-aut'))_('s-fav-aut').innerText=favAut?`${favAut[0]} (${favAut[1]})`:'-';
   const favFandom=Object.entries(fandomMap).sort((a,b)=>b[1]-a[1])[0];if(_('s-fav-fandom'))_('s-fav-fandom').innerText=favFandom?`${favFandom[0]} (${favFandom[1]})`:'-';
   if(_('s-palavras'))_('s-palavras').innerText=palavras.toLocaleString();
-  const mAno=parseInt(userGoals.metaAno)||50;if(_('meta-ano-text'))_('meta-ano-text').innerText=`${concluidas}/${mAno} concluídas`;if(_('meta-ano-fill'))_('meta-ano-fill').style.width=`${Math.min((concluidas/mAno)*100,100)}%`;
+  // Metas inline
+  if(_('meta-ano-text'))_('meta-ano-text').innerText=`${concluidas}/${mAno} obras`;
+  if(_('meta-ano-fill'))_('meta-ano-fill').style.width=`${Math.min((concluidas/mAno)*100,100)}%`;
+  // Anel anual (novo)
+  const anoRing=_('meta-ano-ring-fill');if(anoRing){const c=201.06;anoRing.style.strokeDashoffset=c*(1-metaPct/100);}
+  if(_('meta-ano-ring-pct'))_('meta-ano-ring-pct').innerText=metaPct+'%';
+  // Dispara também o anel diário
+  checkDailyGoalUI();
   if(_('s-g-list'))renderAdvancedStats();updateSessionUI();
 }
 function openUserStats(){renderProfileStats();_('modal-estatisticas').style.display='flex';}
-function renderAdvancedStats(){const genMap={};db.forEach(x=>{if(x.tag)x.tag.split(',').forEach(t=>{const g=t.trim();if(g)genMap[g]=(genMap[g]||0)+1;});});const sorted=Object.entries(genMap).sort((a,b)=>b[1]-a[1]);const colors=['#d30000','#0099cc','#f59e0b','#8e2de2','#00e676','#e91e63','#00c853','#ff6d00'];if(_('s-g-list'))_('s-g-list').innerHTML=sorted.map(([g,q],i)=>{const pct=db.length>0?Math.round(q/db.length*100):0,c=colors[i%colors.length];return `<div class="genre-bar"><div style="width:100px;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">${g}</div><div class="genre-bar-track"><div class="genre-bar-fill" style="width:${pct}%;background:${c};"></div></div><div style="width:50px;text-align:right;font-size:11px;font-weight:900;color:${c};">${q} (${pct}%)</div></div>`;}).join('')||'<p style="color:var(--text-muted);font-size:12px;">Sem dados.</p>';}
+function renderAdvancedStats(){
+  const genMap={};
+  db.forEach(x=>{if(x.tag)x.tag.split(',').forEach(t=>{const g=t.trim();if(g)genMap[g]=(genMap[g]||0)+1;});});
+  const sorted=Object.entries(genMap).sort((a,b)=>b[1]-a[1]);
+  const colors=['#d30000','#00b0ff','#f59e0b','#8e2de2','#00e676','#e91e63','#00c853','#ff6d00','#26c6da','#ff5252'];
+  const max=sorted[0]?.[1]||1;
+  if(_('s-g-list'))_('s-g-list').innerHTML=sorted.length?sorted.slice(0,10).map(([g,q],i)=>{
+    const pct=db.length>0?Math.round(q/db.length*100):0;
+    const barW=Math.round(q/max*100);
+    const c=colors[i%colors.length];
+    return `<div class="anal-genre-item">
+      <div class="anal-genre-dot" style="background:${c};color:${c};box-shadow:0 0 6px ${c}88;"></div>
+      <div class="anal-genre-name">${g}</div>
+      <div class="anal-genre-track"><div class="anal-genre-fill" style="width:${barW}%;background:${c};"></div></div>
+      <div class="anal-genre-count" style="color:${c};">${q} (${pct}%)</div>
+    </div>`;
+  }).join(''):'<p style="color:var(--text-muted);font-size:12px;text-align:center;padding:12px 0;">Nenhum gênero registrado ainda.</p>';
+}
 
 // ======== CONFIG VISUAL ========
-function salvarOpcaoConfig(){userGoals.cfgLayout=_('inp-cfg-layout').value;userGoals.cfgTexture=_('inp-cfg-texture').value;userGoals.cfgAnim=_('inp-cfg-anim').value;userGoals.cfgHD=_('inp-cfg-hd').value;userGoals.cfgProgress=_('inp-cfg-progress')?.value||'on';saveAllData();renderGrids();renderHistoryView();if(currentPasta)setPastaView(pastaViewMode);}
+function salvarOpcaoConfig(){userGoals.cfgLayout=_('inp-cfg-layout').value;userGoals.cfgTexture=_('inp-cfg-texture').value;userGoals.cfgAnim=_('inp-cfg-anim').value;userGoals.cfgHD=_('inp-cfg-hd').value;userGoals.cfgProgress=_('inp-cfg-progress')?.value||'on';const sp=_('inp-cfg-spacing');if(sp)userGoals.cfgSpacing=sp.value;const cs=_('inp-cfg-cover-shape');if(cs)userGoals.cfgCoverShape=cs.value;const rd=_('inp-cfg-radius');if(rd)userGoals.cfgRadius=rd.value;const sh=_('inp-cfg-shadow');if(sh)userGoals.cfgShadow=sh.value;saveAllData();renderGrids();renderHistoryView();if(currentPasta)setPastaView(pastaViewMode);}
 
 // ======== ROLETA ========
 function abrirRoleta(){_('roleta-resultado').innerHTML='Pronto...';_('btn-spin').disabled=false;_('btn-spin').innerText='Sortear Agora';_('modal-roleta').style.display='flex';}
@@ -3139,4 +4181,4 @@ function limparCacheImagens(){if(!confirm('Remover capas locais?'))return;let ct
 function resetDatabase(){if(prompt(" Digite DELETAR TUDO:")==='DELETAR TUDO'){idb.set('db',[]);idb.set('goals',{});idb.set('lixeira',[]);idb.set('wishlist',[]);alert('Recarregando...');location.reload();}}
 </script>
 </body>
-</html>
+        </html>
