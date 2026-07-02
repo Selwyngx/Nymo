@@ -2406,13 +2406,15 @@ select option{background:var(--bg-elevated);}
       <div style="padding:20px 15px 0;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;">
           <h2 style="font-weight:900;">Navegar</h2>
-          <div style="display:flex;gap:8px;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+            <button class="btn-s" onclick="_('inp-import-biblioteca').click()" title="Importa seus mangás do Kotatsu ou Tachiyomi/Mihon direto para a sua biblioteca" style="border-color:var(--primary);color:var(--primary);height:34px;padding:0 12px;font-size:11px;">Importar Biblioteca</button>
             <button class="btn-s" onclick="_('inp-import-fontes').click()" style="border-color:var(--info);color:var(--info);height:34px;padding:0 12px;font-size:11px;">Importar</button>
             <button class="btn-s" onclick="abrirAdicionarFonteModal()" style="border-color:var(--success);color:var(--success);height:34px;padding:0 12px;font-size:11px;">+ Fonte</button>
           </div>
           <input type="file" id="inp-import-fontes" accept=".json,.txt,.csv,.html,.htm,.opml,.xml,.tachibk,.proto.gz,.gz" style="display:none;" onchange="importarFontesArquivo(event)">
+          <input type="file" id="inp-import-biblioteca" accept=".tachibk,.proto.gz,.gz,.zip,.json" style="display:none;" onchange="importarBibliotecaArquivo(event)">
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin:-6px 0 14px;">Seus sites de leitura e scans, num toque de distância.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin:-6px 0 14px;">Seus sites de leitura e scans, num toque de distância. <span style="color:var(--primary);cursor:pointer;font-weight:700;" onclick="_('inp-import-biblioteca').click()">Importar mangás do Kotatsu/Tachiyomi →</span></p>
         <div class="src-search-wrap">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="inp-busca-fonte" placeholder="Buscar fonte..." oninput="renderFontes()">
@@ -5308,8 +5310,10 @@ function pbParse(view,start,end){
       fields.push([fieldNum,'bytes',view.slice(pos.i,pos.i+len)]);
       pos.i+=len;
     }else if(wireType===5){
+      fields.push([fieldNum,'fixed32',view.slice(pos.i,pos.i+4)]);
       pos.i+=4;
     }else if(wireType===1){
+      fields.push([fieldNum,'fixed64',view.slice(pos.i,pos.i+8)]);
       pos.i+=8;
     }else{
       throw new Error('wiretype nao suportado');
@@ -5320,6 +5324,7 @@ function pbParse(view,start,end){
 function pbGetStr(fields,fn){const f=fields.find(x=>x[0]===fn&&x[1]==='bytes');return f?new TextDecoder('utf-8').decode(f[2]):null;}
 function pbGetVarint(fields,fn){const f=fields.find(x=>x[0]===fn&&x[1]==='varint');return f?f[2]:null;}
 function pbGetAll(fields,fn){return fields.filter(x=>x[0]===fn);}
+function pbGetFloat(fields,fn){const f=fields.find(x=>x[0]===fn&&x[1]==='fixed32');if(!f)return null;return new DataView(f[2].buffer,f[2].byteOffset,4).getFloat32(0,true);}
 
 async function extrairFontesTachiyomiBackup(gzBuf){
   const raw=await gunzipArrayBuffer(gzBuf);
@@ -5355,6 +5360,284 @@ async function extrairFontesTachiyomiBackup(gzBuf){
     encontradas.push({nome,url,cat:'Tachiyomi'});
   });
   return encontradas;
+}
+
+// ======== IMPORTAR BIBLIOTECA (Kotatsu e Tachiyomi/Mihon → catálogo automático) ========
+// Diferente do "Importar" acima (que só recupera fontes/sites), esta função lê o backup
+// completo do leitor e cataloga cada mangá automaticamente na Biblioteca (título, capa,
+// autor, capítulos lidos, status e gêneros), sem precisar cadastrar nada manualmente.
+
+// ---- Leitor ZIP minimalista (backups do Kotatsu são um .zip com JSON dentro) ----
+function zLerU16(view,off){return view[off]|(view[off+1]<<8);}
+function zLerU32(view,off){return (view[off]|(view[off+1]<<8)|(view[off+2]<<16)|(view[off+3]<<24))>>>0;}
+async function inflateRaw(bytes){
+  const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+async function unzipArrayBuffer(buf){
+  const view=new Uint8Array(buf);
+  let eocd=-1;
+  const limite=Math.max(0,view.length-22-65557);
+  for(let i=view.length-22;i>=limite;i--){
+    if(view[i]===0x50&&view[i+1]===0x4b&&view[i+2]===0x05&&view[i+3]===0x06){eocd=i;break;}
+  }
+  if(eocd<0)throw new Error('Fim do índice ZIP não encontrado.');
+  const totalEntradas=zLerU16(view,eocd+10);
+  let cdOff=zLerU32(view,eocd+16);
+  const arquivos={};
+  for(let n=0;n<totalEntradas;n++){
+    if(view[cdOff]!==0x50||view[cdOff+1]!==0x4b||view[cdOff+2]!==0x01||view[cdOff+3]!==0x02)break;
+    const metodo=zLerU16(view,cdOff+10);
+    const compSize=zLerU32(view,cdOff+20);
+    const nameLen=zLerU16(view,cdOff+28);
+    const extraLen=zLerU16(view,cdOff+30);
+    const commentLen=zLerU16(view,cdOff+32);
+    const localOff=zLerU32(view,cdOff+42);
+    const nome=new TextDecoder('utf-8').decode(view.slice(cdOff+46,cdOff+46+nameLen));
+    if(!nome.endsWith('/')){
+      const lNameLen=zLerU16(view,localOff+26);
+      const lExtraLen=zLerU16(view,localOff+28);
+      const dataStart=localOff+30+lNameLen+lExtraLen;
+      const dados=view.slice(dataStart,dataStart+compSize);
+      try{arquivos[nome]=metodo===0?dados:(metodo===8?await inflateRaw(dados):null);}catch{arquivos[nome]=null;}
+    }
+    cdOff+=46+nameLen+extraLen+commentLen;
+  }
+  return arquivos;
+}
+
+// ---- Kotatsu: varre os JSONs do zip (favourites/history/categories) e junta os mangás ----
+function coletarMangasDeKotatsu(entradas){
+  const categorias={};
+  Object.keys(entradas).forEach(nome=>{
+    if(!/categor/i.test(nome)||!entradas[nome])return;
+    try{
+      const arr=JSON.parse(new TextDecoder('utf-8').decode(entradas[nome]));
+      (Array.isArray(arr)?arr:[]).forEach(c=>{
+        const id=c.category_id??c.categoryId??c.id;
+        const nomeC=c.title||c.name;
+        if(id!=null&&nomeC)categorias[id]=nomeC;
+      });
+    }catch{}
+  });
+  const extrairNode=(node)=>{
+    if(!node||typeof node!=='object')return null;
+    const tit=node.title||node.name;
+    if(!tit||typeof tit!=='string')return null;
+    const pista=node.cover_url||node.coverUrl||node.large_cover_url||node.largeCoverUrl||node.url||node.public_url||node.publicUrl||node.source;
+    if(!pista)return null;
+    const tagsRaw=node.tags||node.genres||[];
+    return{
+      tit,
+      aut:node.author||(Array.isArray(node.authors)?node.authors.join(', '):'')||'',
+      cov:node.large_cover_url||node.largeCoverUrl||node.cover_url||node.coverUrl||node.cover||'',
+      lnk:node.public_url||node.publicUrl||node.url||'',
+      syn:node.description||'',
+      tags:(Array.isArray(tagsRaw)?tagsRaw:[]).map(t=>typeof t==='string'?t:(t?.title||t?.name)).filter(Boolean)
+    };
+  };
+  const encontrados=new Map();
+  Object.keys(entradas).forEach(nome=>{
+    if(!entradas[nome]||/categor|source|^index(\.json)?$/i.test(nome))return;
+    let arr;
+    try{
+      const json=JSON.parse(new TextDecoder('utf-8').decode(entradas[nome]));
+      arr=Array.isArray(json)?json:(json?[json]:[]);
+    }catch{return;}
+    arr.forEach(item=>{
+      if(!item||typeof item!=='object')return;
+      const manga=extrairNode(item.manga)||extrairNode(item);
+      if(!manga)return;
+      const catId=item.category_id??item.categoryId;
+      const catNome=catId!=null?categorias[catId]:null;
+      const percent=typeof item.percent==='number'?item.percent:(typeof item.progress==='number'?item.progress:null);
+      const chave=padText(manga.tit);
+      if(!chave)return;
+      const atual=encontrados.get(chave)||{...manga,tags:[...manga.tags],categoria:'',percent:null,favorito:false};
+      if(catNome)atual.categoria=catNome;
+      if(percent!=null)atual.percent=Math.max(atual.percent||0,percent);
+      if(/favourit|favorite/i.test(nome))atual.favorito=true;
+      if(!atual.cov&&manga.cov)atual.cov=manga.cov;
+      if(!atual.lnk&&manga.lnk)atual.lnk=manga.lnk;
+      if(!atual.syn&&manga.syn)atual.syn=manga.syn;
+      encontrados.set(chave,atual);
+    });
+  });
+  return [...encontrados.values()];
+}
+function statusDeKotatsu(m){
+  const cat=padText(m.categoria);
+  if(/complet|conclu/.test(cat))return'Concluído';
+  if(/pausa|hold/.test(cat))return'Pausado';
+  if(/drop|abandon/.test(cat))return'Dropado';
+  if(/planej|plan.?to.?read|para.?ler/.test(cat))return'Para Ler';
+  if(/lendo|reading/.test(cat))return'Lendo';
+  if(m.percent!=null){
+    if(m.percent>=0.98)return'Concluído';
+    if(m.percent>0)return'Lendo';
+  }
+  return'Para Ler';
+}
+
+// ---- Tachiyomi/Mihon: lê o backup protobuf completo (título, capa, capítulos, status) ----
+async function extrairObrasTachiyomiBackup(gzBuf){
+  const raw=await gunzipArrayBuffer(gzBuf);
+  const view=new Uint8Array(raw);
+  const top=pbParse(view,0,view.length);
+  const mangaMsgs=pbGetAll(top,1);
+  const catMsgs=pbGetAll(top,2);
+  const nomesCategoria={};
+  catMsgs.forEach(([,,data],i)=>{
+    const f=pbParse(data,0,data.length);
+    nomesCategoria[i]=pbGetStr(f,1)||'';
+  });
+  const obras=[];
+  mangaMsgs.forEach(([,,data])=>{
+    const f=pbParse(data,0,data.length);
+    const tit=pbGetStr(f,3);
+    if(!tit)return;
+    const thumb=pbGetStr(f,9)||'';
+    let dominio='';try{if(thumb)dominio=new URL(thumb).origin;}catch{}
+    const urlRel=pbGetStr(f,2)||'';
+    const lnk=/^https?:\/\//i.test(urlRel)?urlRel:(dominio?dominio+urlRel:'');
+    const autor=pbGetStr(f,5)||pbGetStr(f,4)||'';
+    const syn=pbGetStr(f,6)||'';
+    const generos=pbGetAll(f,7).filter(x=>x[1]==='bytes').map(x=>new TextDecoder('utf-8').decode(x[2]));
+    const favorito=pbGetVarint(f,100);
+    const capMsgs=pbGetAll(f,16);
+    const capsLidos=[];
+    capMsgs.forEach(([,,cdata])=>{
+      const cf=pbParse(cdata,0,cdata.length);
+      const lido=pbGetVarint(cf,4);
+      if(lido&&lido!==0n){
+        const num=pbGetFloat(cf,9);
+        capsLidos.push(num!=null?num:0);
+      }
+    });
+    const capAtual=capsLidos.length?Math.max(...capsLidos):0;
+    const catIdx=pbGetAll(f,17).filter(x=>x[1]==='varint').map(x=>Number(x[2]));
+    const categoria=catIdx.map(i=>nomesCategoria[i]).filter(Boolean).join(' ');
+    const histMsgs=pbGetAll(f,104);
+    let lastRead=0;
+    histMsgs.forEach(([,,hdata])=>{
+      const hf=pbParse(hdata,0,hdata.length);
+      const lr=pbGetVarint(hf,2);
+      if(lr&&Number(lr)>lastRead)lastRead=Number(lr);
+    });
+    obras.push({tit,aut:autor,syn,tags:generos,cov:thumb,lnk,favorito:favorito===1n,capAtual,capTotal:capMsgs.length,categoria,lastRead});
+  });
+  return obras;
+}
+function statusDeTachiyomi(m){
+  const cat=padText(m.categoria);
+  if(/complet|conclu/.test(cat))return'Concluído';
+  if(/pausa|hold/.test(cat))return'Pausado';
+  if(/drop|abandon/.test(cat))return'Dropado';
+  if(/planej|plan.?to.?read|para.?ler/.test(cat))return'Para Ler';
+  if(/lendo|reading|library/.test(cat))return'Lendo';
+  if(m.capTotal>0&&m.capAtual>0&&m.capAtual>=m.capTotal)return'Concluído';
+  if(m.capAtual>0)return'Lendo';
+  return'Para Ler';
+}
+
+// ---- Converte um mangá bruto (de qualquer origem) para o formato de obra do Nymos ----
+function converterParaObra(m,origem,offset){
+  let sta,cap='',capTotal='',lastd='';
+  if(origem==='tachiyomi'){
+    sta=statusDeTachiyomi(m);
+    if(m.capAtual)cap=String(Number.isInteger(m.capAtual)?m.capAtual:m.capAtual.toFixed(1));
+    if(m.capTotal)capTotal=String(m.capTotal);
+    if(m.lastRead)lastd=new Date(m.lastRead).toISOString().slice(0,10);
+  }else{
+    sta=statusDeKotatsu(m);
+  }
+  return{
+    id:String(Date.now()+offset),
+    tit:(m.tit||'').trim().slice(0,200),
+    aut:(m.aut||'').trim(),
+    tipo:'Mangá / Manhwa',
+    sta,cap,capTotal,
+    rat:'',wds:'',rer:'0',fol:'',
+    fav:m.favorito?'1':'0',
+    pinned:'0',archived:'0',
+    tag:(m.tags||[]).slice(0,12).join(', '),
+    war:'',
+    syn:(m.syn||'').trim(),
+    rev:'',music:'',
+    lnk:m.lnk||'',
+    lastd,
+    fandom:'',shipp:'',prio:'',
+    lang:'Português',
+    startd:'',tropes:'',
+    corManual:'#000000',corManual2:'#000000',
+    cov:m.cov||''
+  };
+}
+
+// ---- Handler principal do botão "Importar Biblioteca" ----
+async function importarBibliotecaArquivo(ev){
+  const file=ev.target.files[0];if(!file)return;
+  const buf=await file.arrayBuffer();
+  const bytes=new Uint8Array(buf);
+  let brutas=[],origem='';
+  try{
+    if(bytes[0]===0x1f&&bytes[1]===0x8b){
+      origem='tachiyomi';
+      brutas=await extrairObrasTachiyomiBackup(buf);
+    }else if(bytes[0]===0x50&&bytes[1]===0x4b){
+      origem='kotatsu';
+      const entradas=await unzipArrayBuffer(buf);
+      brutas=coletarMangasDeKotatsu(entradas);
+    }else{
+      origem='kotatsu';
+      const json=JSON.parse(new TextDecoder('utf-8').decode(bytes));
+      const nomeChave=Array.isArray(json)?'favourites':'dados';
+      brutas=coletarMangasDeKotatsu({[nomeChave]:new TextEncoder().encode(JSON.stringify(json))});
+    }
+  }catch(err){
+    showToast('Não foi possível ler esse arquivo de backup.','error');
+    ev.target.value='';return;
+  }
+  brutas=brutas.filter(m=>m&&m.tit);
+  if(!brutas.length){
+    showToast('Nenhum mangá encontrado nesse backup.','error');
+    ev.target.value='';return;
+  }
+  const existentes=new Set(db.map(x=>padText(x.tit)));
+  const novas=[];let atualizadas=0;
+  brutas.forEach((m,i)=>{
+    const chave=padText(m.tit);
+    if(!chave)return;
+    const obra=converterParaObra(m,origem,i);
+    if(existentes.has(chave)){
+      const alvo=db.find(x=>padText(x.tit)===chave);
+      if(alvo){
+        let mudou=false;
+        if(obra.cap&&parseFloat(obra.cap)>parseFloat(alvo.cap||0)){alvo.cap=obra.cap;mudou=true;}
+        if(obra.capTotal&&!alvo.capTotal){alvo.capTotal=obra.capTotal;mudou=true;}
+        if(!alvo.cov&&obra.cov){alvo.cov=obra.cov;mudou=true;}
+        if(!alvo.syn&&obra.syn){alvo.syn=obra.syn;mudou=true;}
+        if(!alvo.lnk&&obra.lnk){alvo.lnk=obra.lnk;mudou=true;}
+        if(!alvo.tag&&obra.tag){alvo.tag=obra.tag;mudou=true;}
+        if(mudou)atualizadas++;
+      }
+      return;
+    }
+    existentes.add(chave);
+    novas.push(obra);
+  });
+  if(!novas.length&&!atualizadas){
+    showToast('Tudo já estava catalogado — nada de novo encontrado.','info');
+    ev.target.value='';return;
+  }
+  const origemTxt=origem==='tachiyomi'?'Tachiyomi/Mihon':'Kotatsu';
+  const msg=`Encontramos ${brutas.length} mangá(s) no backup do ${origemTxt}.\n\n${novas.length} nova(s) obra(s) e ${atualizadas} atualização(ões) de progresso.\n\nCatalogar automaticamente na sua biblioteca?`;
+  if(!confirm(msg)){ev.target.value='';return;}
+  db=[...novas,...db];
+  await saveAllData();
+  ev.target.value='';
+  showToast(`${novas.length} obra(s) catalogada(s) automaticamente!`,'success');
+  location.reload();
 }
 
 function importarFontesArquivo(ev){
@@ -5628,4 +5911,4 @@ function limparCacheImagens(){if(!confirm('Remover capas locais?'))return;let ct
 function resetDatabase(){if(prompt(" Digite DELETAR TUDO:")==='DELETAR TUDO'){idb.set('db',[]);idb.set('goals',{});idb.set('lixeira',[]);idb.set('wishlist',[]);alert('Recarregando...');location.reload();}}
 </script>
 </body>
-  </html>
+                                                                                                                  </html>
